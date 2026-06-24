@@ -218,13 +218,14 @@ def format_fixed(value: float, places: int) -> str:
     return f"{value:.{places}f}"
 
 
-def build_parser() -> argparse.ArgumentParser:
+def build_parser(default_input: str | None = None) -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Add pulsar dispersion-delay percentages to a CSV table."
     )
     parser.add_argument(
         "--input",
-        required=True,
+        default=default_input,
+        required=default_input is None,
         help="Input CSV path or filename in ../csv relative to the run directory.",
     )
     parser.add_argument(
@@ -247,8 +248,8 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def main(argv: list[str] | None = None) -> int:
-    parser = build_parser()
+def run_cli(argv: list[str] | None = None, default_input: str | None = None) -> int:
+    parser = build_parser(default_input)
     args = parser.parse_args(argv)
 
     try:
@@ -260,6 +261,10 @@ def main(argv: list[str] | None = None) -> int:
 
     print(f"Wrote {output_path}")
     return 0
+
+
+def main(argv: list[str] | None = None) -> int:
+    return run_cli(argv)
 
 
 if __name__ == "__main__":

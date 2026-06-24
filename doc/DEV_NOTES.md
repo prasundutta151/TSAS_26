@@ -1,5 +1,20 @@
 # DEV_NOTES
 
+## 24:6:26::12:12 Intent
+
+Create two table-specific code entry points and two run-directory shell scripts: one for the original prompt-image sample table and one for the ATNF/parallax-distance sample table.
+
+## 24:6:26::12:12 What Is Done
+
+- Added `script/pulsar_delay_old_table.py`, defaulting to `sample_pulsar.csv`.
+- Added `script/pulsar_delay_atnf_table.py`, defaulting to `sample_pulsar_ATNF.csv`.
+- Added `rundir/run_old_table.sh`.
+- Added `rundir/run_atnf_table.sh`.
+- Updated `rundir/run_example.sh` to call the ATNF runner.
+- Added installed console entry points for both table-specific scripts.
+- Updated README Markdown/HTML and requirements documentation.
+- Rebuilt `dist/TSAS-0.1.0.tar.gz`.
+
 ## 24:6:26::12:08 Intent
 
 Change output formatting so the delay is reported in nanoseconds to two decimal places, delay percentages are rounded to one decimal place, and `D(3mths) AU`/`D(6mths) AU` are rounded to one decimal place.

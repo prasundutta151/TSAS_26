@@ -2,9 +2,14 @@
 
 TSAS adds dispersion-delay columns to pulsar CSV tables.
 
-The CLI lives in `script/`. It reads a CSV from `../csv` relative to the directory where you run the command when a plain filename is supplied, preserves all input columns, calculates the dispersive time delay across an observing bandwidth, and writes a new CSV in the same directory unless `--output` is given.
+The CLI code lives in `script/`. The shared calculation engine is `script/pulsar_delay.py`, with two table-specific entry points:
 
-The repository includes a `rundir/` folder with a small example script. Running from `rundir/` makes `../csv` point to the repository's sample CSV directory.
+- `script/pulsar_delay_old_table.py` defaults to `csv/sample_pulsar.csv`
+- `script/pulsar_delay_atnf_table.py` defaults to `csv/sample_pulsar_ATNF.csv`
+
+Each entry point reads from `../csv` relative to the directory where you run the command, preserves all input columns, calculates the dispersive time delay across an observing bandwidth, and writes a new CSV in the same directory unless `--output` is given.
+
+The repository includes a `rundir/` folder with two small runner scripts. Running from `rundir/` makes `../csv` point to the repository's sample CSV directory.
 
 The included `csv/sample_pulsar.csv` file contains the full pulsar list from the prompt image, with dispersion measures added from the ATNF Pulsar Catalogue v2.8.1.
 
@@ -49,6 +54,22 @@ Missing numeric values represented by `?`, `-`, `--`, or a blank cell produce bl
 ## Usage
 
 Install and tool notes are in `doc/REQUIREMENTS.md`.
+
+For the prompt-image/old-table sample:
+
+```bash
+cd rundir
+./run_old_table.sh
+```
+
+For the ATNF/parallax-distance sample:
+
+```bash
+cd rundir
+./run_atnf_table.sh
+```
+
+The generic CLI can still be used with any compatible CSV:
 
 ```bash
 python3 ../script/pulsar_delay.py --input pulsars.csv --reference-mhz 1400 --bandwidth-mhz 100

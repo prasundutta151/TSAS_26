@@ -31,7 +31,8 @@ From the repository's `rundir/` directory:
 
 ```bash
 cd rundir
-./run_example.sh
+./run_old_table.sh
+./run_atnf_table.sh
 ```
 
 Or run the CLI directly:
@@ -55,6 +56,8 @@ Then run:
 ```bash
 cd rundir
 pulsar-delay --input sample_pulsar.csv --reference-mhz 1420 --bandwidth-mhz 1
+pulsar-delay-old-table --reference-mhz 1420 --bandwidth-mhz 1
+pulsar-delay-atnf-table --reference-mhz 1420 --bandwidth-mhz 1
 ```
 
 ## Optional Development Tools
