@@ -1,5 +1,17 @@
 # DEV_NOTES
 
+## 24:6:26::11:55 Intent
+
+Provide the reference for the dispersion-delay formula and correct the MHz-to-millisecond constant used by the script. The cited Lorimer & Kramer convention gives `4.148808 ms GHz^2 pc^-1 cm^3`; since the CLI accepts MHz and outputs milliseconds, the script should use `4.148808e6`.
+
+## 24:6:26::11:55 What Is Done
+
+- Updated the script dispersion constant from `4.148808e3` to `4.148808e6` for MHz inputs and millisecond outputs.
+- Updated README Markdown and HTML formula text.
+- Added the Lorimer & Kramer reference note to the README files.
+- Updated the percentage-check example in `doc/ATNF_COMPARISON.md`.
+- Rebuilt `dist/TSAS-0.1.0.tar.gz`.
+
 ## 24:6:26::11:47 Intent
 
 Add an alternate ATNF-focused sample CSV that uses ATNF v2.8.1 values for `P0`, `W50`, `S1400`, `V_trans`, `DM`, `PX mas`, and `DIST kpc`, carries over `RMS`, `t5sigma`, and `Ton` from the existing sample, recomputes `SW50` from the ATNF quantities, and removes `D (21) AU` and `D (22) AU`.

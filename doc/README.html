@@ -23,7 +23,7 @@
   <p>The reference frequency is treated as the center of the band:</p>
   <pre><code>low_mhz = reference_mhz - bandwidth_mhz / 2
 high_mhz = reference_mhz + bandwidth_mhz / 2
-delay_ms = 4.148808e3 * DM * (low_mhz^-2 - high_mhz^-2)</code></pre>
+delay_ms = 4.148808e6 * DM * (low_mhz^-2 - high_mhz^-2)</code></pre>
   <p>The script then reports <code>delay (ms)</code>, <code>delay/P0 (%)</code>, and <code>delay/W50 (%)</code>.</p>
   <p><code>W50</code> is expected to be given in milliseconds. In the sample table this is the <code>W50 ms</code> column, so <code>delay/W50 (%)</code> compares two millisecond quantities directly.</p>
   <h2>Required Columns</h2>
@@ -41,5 +41,6 @@ delay_ms = 4.148808e3 * DM * (low_mhz^-2 - high_mhz^-2)</code></pre>
   <h2>Data Note</h2>
   <p>The sample DM values are from the ATNF Pulsar Catalogue. ATNF requests acknowledgement of the catalogue web address and Manchester, Hobbs, Teoh &amp; Hobbs, AJ, 129, 1993-2006 (2005), when catalogue data are used in publications.</p>
   <p>The sample table keeps the prompt-image transverse velocity beside the current catalogue transverse velocity as <code>Vtrans table km/s</code> and <code>Vtrans catalog km/s</code>. A comparison against ATNF v2.8.1 is in <code>doc/ATNF_COMPARISON.md</code>.</p>
+  <p>The dispersion-delay constant follows Lorimer &amp; Kramer, <em>Handbook of Pulsar Astronomy</em> (Cambridge University Press, 2005): <code>4.148808 ms GHz^2 pc^-1 cm^3</code>. With frequencies supplied in MHz, this becomes <code>4.148808e6 ms MHz^2 pc^-1 cm^3</code>.</p>
 </body>
 </html>

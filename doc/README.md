@@ -17,7 +17,7 @@ The reference frequency is treated as the center of the band:
 ```text
 low_mhz = reference_mhz - bandwidth_mhz / 2
 high_mhz = reference_mhz + bandwidth_mhz / 2
-delay_ms = 4.148808e3 * DM * (low_mhz^-2 - high_mhz^-2)
+delay_ms = 4.148808e6 * DM * (low_mhz^-2 - high_mhz^-2)
 ```
 
 The script then reports:
@@ -71,3 +71,5 @@ The distribution tarball is written to `dist/TSAS-0.1.0.tar.gz`.
 The sample DM values are from the ATNF Pulsar Catalogue. ATNF requests acknowledgement of the catalogue web address and Manchester, Hobbs, Teoh & Hobbs, AJ, 129, 1993-2006 (2005), when catalogue data are used in publications.
 
 The sample table keeps the prompt-image transverse velocity beside the current catalogue transverse velocity as `Vtrans table km/s` and `Vtrans catalog km/s`. A comparison against ATNF v2.8.1 is in `doc/ATNF_COMPARISON.md`.
+
+The dispersion-delay constant follows Lorimer & Kramer, *Handbook of Pulsar Astronomy* (Cambridge University Press, 2005): `4.148808 ms GHz^2 pc^-1 cm^3`. With frequencies supplied in MHz, this becomes `4.148808e6 ms MHz^2 pc^-1 cm^3`.

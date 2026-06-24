@@ -12,7 +12,7 @@ from typing import Iterable
 
 
 VERSION = "0.1.0"
-DISPERSION_CONSTANT_MS = 4.148808e3
+DISPERSION_CONSTANT_MS = 4.148808e6
 DEFAULT_CSV_DIR = Path.cwd() / ".." / "csv"
 OUTPUT_DELAY_COLUMN = "delay (ms)"
 OUTPUT_P0_PERCENT_COLUMN = "delay/P0 (%)"
