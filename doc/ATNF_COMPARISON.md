@@ -13,6 +13,8 @@ The two velocity columns differ because they come from different sources. The pr
 
 ATNF has direct matches for `P0`, `W50`, `S1400`, `DM`, and `VTRANS`. The sample table also has `SW50`, `RMS`, `t5sigma`, `Ton`, `D (21) AU`, and `D (22) AU`; those are not direct ATNF catalogue fields in this check.
 
+`W50` is in milliseconds in both the prompt-image sample table and ATNF query output.
+
 `P0` differs only by rounding in the prompt table. `DM` matches ATNF values after rounding. The main differences are in `W50`, `S1400`, and transverse velocity.
 
 | Pulsar | Differences from ATNF v2.8.1 |

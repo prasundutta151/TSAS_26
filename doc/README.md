@@ -24,12 +24,14 @@ The script then reports:
 - `delay/P0 (%)`
 - `delay/W50 (%)`
 
+`W50` is expected to be given in milliseconds. In the sample table this is the `W50 ms` column, so `delay/W50 (%)` compares two millisecond quantities directly.
+
 ## Required Columns
 
 The input CSV needs columns for:
 
 - pulsar period, such as `P0`, `P0 secs`, `period`, or `period_ms`
-- W50 pulse width, such as `W50` or `W50 ms`
+- W50 pulse width in milliseconds, such as `W50` or `W50 ms`
 - dispersion measure, such as `DM` or `dispersion measure`
 
 Missing numeric values represented by `?`, `-`, `--`, or a blank cell produce blank delay outputs for that row.

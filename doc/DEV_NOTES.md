@@ -1,5 +1,15 @@
 # DEV_NOTES
 
+## 24:6:26::11:37 Intent
+
+Add an explicit documentation note that `W50` is given in milliseconds, so `delay/W50 (%)` compares the computed delay in milliseconds with a millisecond pulse-width value.
+
+## 24:6:26::11:37 What Is Done
+
+- Updated README Markdown and HTML to state that `W50` is expected in milliseconds.
+- Updated `doc/ATNF_COMPARISON.md` to state that both the sample table and ATNF query output use milliseconds for `W50`.
+- Rebuilt `dist/TSAS-0.1.0.tar.gz`.
+
 ## 24:6:26::11:33 Intent
 
 Verify whether `delay/P0 (%)` is multiplied by 100, rename the derived output columns to the requested presentation form, place old-table and current-catalog transverse velocities side by side, and document differences between prompt-image values and ATNF v2.8.1 where the catalogue has matching parameters.
