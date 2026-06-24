@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "tsas-pulsar-delay"
 version = "0.1.0"
 description = "Compute pulsar dispersion delay across a bandwidth from CSV tables."
-readme = "README.md"
+readme = "doc/README.md"
 requires-python = ">=3.9"
 authors = [
   { name = "Prasun Dutta" }
@@ -14,7 +14,7 @@ authors = [
 license = { text = "MIT" }
 
 [project.scripts]
-pulsar-delay = "pulsar_delay:main"
+pulsar-delay = "script.pulsar_delay:main"
 
 [tool.setuptools]
-py-modules = ["pulsar_delay"]
+packages = ["script"]

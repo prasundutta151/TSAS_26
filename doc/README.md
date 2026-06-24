@@ -2,7 +2,9 @@
 
 TSAS adds dispersion-delay columns to pulsar CSV tables.
 
-The CLI reads a CSV from `../csv` when a plain filename is supplied, calculates the dispersive time delay across an observing bandwidth, and writes a new CSV in the same directory unless `--output` is given.
+The CLI lives in `script/`. It reads a CSV from `../csv` relative to the directory where you run the command when a plain filename is supplied, calculates the dispersive time delay across an observing bandwidth, and writes a new CSV in the same directory unless `--output` is given.
+
+The repository includes a `rundir/` folder with a small example script. Running from `rundir/` makes `../csv` point to the repository's sample CSV directory.
 
 ## Formula
 
@@ -33,13 +35,13 @@ Missing numeric values represented by `?`, `-`, `--`, or a blank cell produce bl
 ## Usage
 
 ```bash
-python3 pulsar_delay.py --input pulsars.csv --reference-mhz 1400 --bandwidth-mhz 100
+python3 ../script/pulsar_delay.py --input pulsars.csv --reference-mhz 1400 --bandwidth-mhz 100
 ```
 
 With an explicit output filename:
 
 ```bash
-python3 pulsar_delay.py --input pulsars.csv --output pulsars_delay.csv --reference-mhz 1400 --bandwidth-mhz 100
+python3 ../script/pulsar_delay.py --input pulsars.csv --output pulsars_delay.csv --reference-mhz 1400 --bandwidth-mhz 100
 ```
 
 If the input is `../csv/pulsars.csv` and `--output` is omitted, the output is:
@@ -51,3 +53,7 @@ If the input is `../csv/pulsars.csv` and `--output` is omitted, the output is:
 ## Version
 
 Current version: `0.1.0`
+
+## Distribution
+
+The distribution tarball is written to `dist/TSAS-0.1.0.tar.gz`.

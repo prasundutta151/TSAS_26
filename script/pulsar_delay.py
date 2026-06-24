@@ -7,13 +7,13 @@ import argparse
 import csv
 import math
 import re
-import sys
 from pathlib import Path
 from typing import Iterable
 
 
 VERSION = "0.1.0"
 DISPERSION_CONSTANT_MS = 4.148808e3
+DEFAULT_CSV_DIR = Path.cwd() / ".." / "csv"
 
 
 class ColumnLookupError(ValueError):
@@ -71,7 +71,7 @@ def resolve_input_path(input_value: str) -> Path:
         return candidate
 
     if candidate.parent == Path("."):
-        csv_candidate = (Path.cwd() / ".." / "csv" / candidate).resolve()
+        csv_candidate = (DEFAULT_CSV_DIR / candidate).resolve()
         if csv_candidate.exists():
             return csv_candidate
 
@@ -174,7 +174,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Add pulsar dispersion-delay percentages to a CSV table."
     )
-    parser.add_argument("--input", required=True, help="Input CSV path or filename in ../csv")
+    parser.add_argument(
+        "--input",
+        required=True,
+        help="Input CSV path or filename in ../csv relative to the run directory.",
+    )
     parser.add_argument(
         "--output",
         help="Output CSV path. Defaults to <input>_with_delay.csv in the input directory.",

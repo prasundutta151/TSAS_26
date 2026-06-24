@@ -15,7 +15,8 @@
 <body>
   <h1>TSAS</h1>
   <p>TSAS adds dispersion-delay columns to pulsar CSV tables.</p>
-  <p>The CLI reads a CSV from <code>../csv</code> when a plain filename is supplied, calculates the dispersive time delay across an observing bandwidth, and writes a new CSV in the same directory unless <code>--output</code> is given.</p>
+  <p>The CLI lives in <code>script/</code>. It reads a CSV from <code>../csv</code> relative to the directory where you run the command when a plain filename is supplied, calculates the dispersive time delay across an observing bandwidth, and writes a new CSV in the same directory unless <code>--output</code> is given.</p>
+  <p>The repository includes a <code>rundir/</code> folder with a small example script. Running from <code>rundir/</code> makes <code>../csv</code> point to the repository's sample CSV directory.</p>
   <h2>Formula</h2>
   <p>The reference frequency is treated as the center of the band:</p>
   <pre><code>low_mhz = reference_mhz - bandwidth_mhz / 2
@@ -25,11 +26,13 @@ delay_ms = 4.148808e3 * DM * (low_mhz^-2 - high_mhz^-2)</code></pre>
   <h2>Required Columns</h2>
   <p>The input CSV needs columns for pulsar period, W50 pulse width, and dispersion measure. Common names such as <code>P0 secs</code>, <code>W50 ms</code>, and <code>DM</code> are accepted.</p>
   <h2>Usage</h2>
-  <pre><code>python3 pulsar_delay.py --input pulsars.csv --reference-mhz 1400 --bandwidth-mhz 100</code></pre>
+  <pre><code>python3 ../script/pulsar_delay.py --input pulsars.csv --reference-mhz 1400 --bandwidth-mhz 100</code></pre>
   <p>With an explicit output filename:</p>
-  <pre><code>python3 pulsar_delay.py --input pulsars.csv --output pulsars_delay.csv --reference-mhz 1400 --bandwidth-mhz 100</code></pre>
+  <pre><code>python3 ../script/pulsar_delay.py --input pulsars.csv --output pulsars_delay.csv --reference-mhz 1400 --bandwidth-mhz 100</code></pre>
   <p>If the input is <code>../csv/pulsars.csv</code> and <code>--output</code> is omitted, the output is <code>../csv/pulsars_with_delay.csv</code>.</p>
   <h2>Version</h2>
   <p>Current version: <code>0.1.0</code></p>
+  <h2>Distribution</h2>
+  <p>The distribution tarball is written to <code>dist/TSAS-0.1.0.tar.gz</code>.</p>
 </body>
 </html>
