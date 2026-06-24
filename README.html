@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TSAS README</title>
+  <style>
+    body { color: #202124; font: 16px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 2rem auto; max-width: 820px; padding: 0 1rem; }
+    code, pre { background: #f4f6f8; border-radius: 6px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    code { padding: 0.1rem 0.25rem; }
+    pre { overflow-x: auto; padding: 1rem; }
+    h1, h2 { line-height: 1.2; }
+  </style>
+</head>
+<body>
+  <h1>TSAS</h1>
+  <p>TSAS adds dispersion-delay columns to pulsar CSV tables.</p>
+  <p>The CLI reads a CSV from <code>../csv</code> when a plain filename is supplied, calculates the dispersive time delay across an observing bandwidth, and writes a new CSV in the same directory unless <code>--output</code> is given.</p>
+  <h2>Formula</h2>
+  <p>The reference frequency is treated as the center of the band:</p>
+  <pre><code>low_mhz = reference_mhz - bandwidth_mhz / 2
+high_mhz = reference_mhz + bandwidth_mhz / 2
+delay_ms = 4.148808e3 * DM * (low_mhz^-2 - high_mhz^-2)</code></pre>
+  <p>The script then reports <code>delay_ms</code>, <code>delay_period_percent</code>, and <code>delay_w50_percent</code>.</p>
+  <h2>Required Columns</h2>
+  <p>The input CSV needs columns for pulsar period, W50 pulse width, and dispersion measure. Common names such as <code>P0 secs</code>, <code>W50 ms</code>, and <code>DM</code> are accepted.</p>
+  <h2>Usage</h2>
+  <pre><code>python3 pulsar_delay.py --input pulsars.csv --reference-mhz 1400 --bandwidth-mhz 100</code></pre>
+  <p>With an explicit output filename:</p>
+  <pre><code>python3 pulsar_delay.py --input pulsars.csv --output pulsars_delay.csv --reference-mhz 1400 --bandwidth-mhz 100</code></pre>
+  <p>If the input is <code>../csv/pulsars.csv</code> and <code>--output</code> is omitted, the output is <code>../csv/pulsars_with_delay.csv</code>.</p>
+  <h2>Version</h2>
+  <p>Current version: <code>0.1.0</code></p>
+</body>
+</html>

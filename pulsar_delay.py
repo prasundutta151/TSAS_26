@@ -1,0 +1,214 @@
+#!/usr/bin/env python3
+"""Compute dispersion-delay fractions for a pulsar CSV table."""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import math
+import re
+import sys
+from pathlib import Path
+from typing import Iterable
+
+
+VERSION = "0.1.0"
+DISPERSION_CONSTANT_MS = 4.148808e3
+
+
+class ColumnLookupError(ValueError):
+    """Raised when a required input column cannot be identified."""
+
+
+def normalize_header(name: str) -> str:
+    """Return a relaxed header key for matching science-table labels."""
+    return re.sub(r"[^a-z0-9]+", "", name.casefold())
+
+
+def find_column(headers: Iterable[str], aliases: Iterable[str]) -> str:
+    normalized = {normalize_header(header): header for header in headers}
+    for alias in aliases:
+        key = normalize_header(alias)
+        if key in normalized:
+            return normalized[key]
+    raise ColumnLookupError(
+        "Could not find any of these columns: " + ", ".join(sorted(aliases))
+    )
+
+
+def parse_float(value: str, column: str, row_number: int) -> float:
+    text = (value or "").strip()
+    if not text or text in {"?", "-", "--", "nan", "NaN"}:
+        return math.nan
+    try:
+        return float(text)
+    except ValueError as exc:
+        raise ValueError(
+            f"Row {row_number}: column {column!r} contains non-numeric value {value!r}"
+        ) from exc
+
+
+def period_to_ms(period_value: float, period_column: str) -> float:
+    column_key = normalize_header(period_column)
+    if "ms" in column_key or "millisecond" in column_key:
+        return period_value
+    return period_value * 1000.0
+
+
+def delay_across_band_ms(dm: float, reference_mhz: float, bandwidth_mhz: float) -> float:
+    low_mhz = reference_mhz - (bandwidth_mhz / 2.0)
+    high_mhz = reference_mhz + (bandwidth_mhz / 2.0)
+    if low_mhz <= 0:
+        raise ValueError(
+            "Reference frequency minus half the bandwidth must be greater than 0 MHz"
+        )
+    return DISPERSION_CONSTANT_MS * dm * ((low_mhz**-2) - (high_mhz**-2))
+
+
+def resolve_input_path(input_value: str) -> Path:
+    candidate = Path(input_value).expanduser()
+    if candidate.is_absolute():
+        return candidate
+
+    if candidate.parent == Path("."):
+        csv_candidate = (Path.cwd() / ".." / "csv" / candidate).resolve()
+        if csv_candidate.exists():
+            return csv_candidate
+
+    if candidate.exists():
+        return candidate
+
+    return candidate.resolve()
+
+
+def resolve_output_path(output_value: str | None, input_path: Path) -> Path:
+    if output_value:
+        candidate = Path(output_value).expanduser()
+        if candidate.is_absolute() or candidate.parent != Path("."):
+            return candidate.resolve()
+        return (input_path.parent / candidate).resolve()
+
+    return input_path.with_name(f"{input_path.stem}_with_delay{input_path.suffix}")
+
+
+def process_csv(input_path: Path, output_path: Path, reference_mhz: float, bandwidth_mhz: float) -> None:
+    if reference_mhz <= 0:
+        raise ValueError("Reference frequency must be greater than 0 MHz")
+    if bandwidth_mhz <= 0:
+        raise ValueError("Bandwidth must be greater than 0 MHz")
+    if reference_mhz - (bandwidth_mhz / 2.0) <= 0:
+        raise ValueError("Bandwidth is too large for the supplied reference frequency")
+
+    with input_path.open("r", newline="", encoding="utf-8-sig") as input_file:
+        reader = csv.DictReader(input_file)
+        if not reader.fieldnames:
+            raise ValueError(f"{input_path} does not contain a CSV header row")
+
+        headers = list(reader.fieldnames)
+        period_column = find_column(
+            headers,
+            {
+                "P0",
+                "P_0",
+                "P0 secs",
+                "P0 seconds",
+                "period",
+                "period seconds",
+                "period_ms",
+            },
+        )
+        w50_column = find_column(
+            headers,
+            {"W50", "W_50", "W50 ms", "pulse width w50", "width50", "width_50"},
+        )
+        dm_column = find_column(
+            headers,
+            {
+                "DM",
+                "dispersion measure",
+                "dispersion_measure",
+                "dispersion measure pc cm-3",
+                "dm pc cm-3",
+            },
+        )
+
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_fields = headers + [
+            "delay_ms",
+            "delay_period_percent",
+            "delay_w50_percent",
+        ]
+
+        with output_path.open("w", newline="", encoding="utf-8") as output_file:
+            writer = csv.DictWriter(output_file, fieldnames=output_fields)
+            writer.writeheader()
+
+            for row_number, row in enumerate(reader, start=2):
+                dm = parse_float(row.get(dm_column, ""), dm_column, row_number)
+                period = parse_float(row.get(period_column, ""), period_column, row_number)
+                w50_ms = parse_float(row.get(w50_column, ""), w50_column, row_number)
+
+                if math.isnan(dm) or math.isnan(period) or math.isnan(w50_ms):
+                    delay_ms = math.nan
+                    period_percent = math.nan
+                    w50_percent = math.nan
+                else:
+                    period_ms = period_to_ms(period, period_column)
+                    delay_ms = delay_across_band_ms(dm, reference_mhz, bandwidth_mhz)
+                    period_percent = (delay_ms / period_ms) * 100.0
+                    w50_percent = (delay_ms / w50_ms) * 100.0
+
+                row["delay_ms"] = format_number(delay_ms)
+                row["delay_period_percent"] = format_number(period_percent)
+                row["delay_w50_percent"] = format_number(w50_percent)
+                writer.writerow(row)
+
+
+def format_number(value: float) -> str:
+    if math.isnan(value):
+        return ""
+    return f"{value:.6g}"
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="Add pulsar dispersion-delay percentages to a CSV table."
+    )
+    parser.add_argument("--input", required=True, help="Input CSV path or filename in ../csv")
+    parser.add_argument(
+        "--output",
+        help="Output CSV path. Defaults to <input>_with_delay.csv in the input directory.",
+    )
+    parser.add_argument(
+        "--reference-mhz",
+        type=float,
+        required=True,
+        help="Reference frequency in MHz, interpreted as the band center.",
+    )
+    parser.add_argument(
+        "--bandwidth-mhz",
+        type=float,
+        required=True,
+        help="Observing bandwidth in MHz.",
+    )
+    parser.add_argument("--version", action="version", version=f"%(prog)s {VERSION}")
+    return parser
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = build_parser()
+    args = parser.parse_args(argv)
+
+    try:
+        input_path = resolve_input_path(args.input)
+        output_path = resolve_output_path(args.output, input_path)
+        process_csv(input_path, output_path, args.reference_mhz, args.bandwidth_mhz)
+    except (ColumnLookupError, OSError, ValueError) as exc:
+        parser.exit(1, f"error: {exc}\n")
+
+    print(f"Wrote {output_path}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
