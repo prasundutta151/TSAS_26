@@ -2,7 +2,7 @@
 
 TSAS adds dispersion-delay columns to pulsar CSV tables.
 
-The CLI lives in `script/`. It reads a CSV from `../csv` relative to the directory where you run the command when a plain filename is supplied, calculates the dispersive time delay across an observing bandwidth, and writes a new CSV in the same directory unless `--output` is given.
+The CLI lives in `script/`. It reads a CSV from `../csv` relative to the directory where you run the command when a plain filename is supplied, preserves all input columns, calculates the dispersive time delay across an observing bandwidth, and writes a new CSV in the same directory unless `--output` is given.
 
 The repository includes a `rundir/` folder with a small example script. Running from `rundir/` makes `../csv` point to the repository's sample CSV directory.
 
@@ -20,9 +20,9 @@ delay_ms = 4.148808e3 * DM * (low_mhz^-2 - high_mhz^-2)
 
 The script then reports:
 
-- `delay_ms`
-- `delay_period_percent`
-- `delay_w50_percent`
+- `time_delay_ms`
+- `delay_over_P0_percent`
+- `delay_over_W50_percent`
 
 ## Required Columns
 

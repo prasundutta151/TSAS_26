@@ -14,6 +14,9 @@ from typing import Iterable
 VERSION = "0.1.0"
 DISPERSION_CONSTANT_MS = 4.148808e3
 DEFAULT_CSV_DIR = Path.cwd() / ".." / "csv"
+OUTPUT_DELAY_COLUMN = "time_delay_ms"
+OUTPUT_P0_PERCENT_COLUMN = "delay_over_P0_percent"
+OUTPUT_W50_PERCENT_COLUMN = "delay_over_W50_percent"
 
 
 class ColumnLookupError(ValueError):
@@ -134,9 +137,9 @@ def process_csv(input_path: Path, output_path: Path, reference_mhz: float, bandw
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_fields = headers + [
-            "delay_ms",
-            "delay_period_percent",
-            "delay_w50_percent",
+            OUTPUT_DELAY_COLUMN,
+            OUTPUT_P0_PERCENT_COLUMN,
+            OUTPUT_W50_PERCENT_COLUMN,
         ]
 
         with output_path.open("w", newline="", encoding="utf-8") as output_file:
@@ -158,9 +161,9 @@ def process_csv(input_path: Path, output_path: Path, reference_mhz: float, bandw
                     period_percent = (delay_ms / period_ms) * 100.0
                     w50_percent = (delay_ms / w50_ms) * 100.0
 
-                row["delay_ms"] = format_number(delay_ms)
-                row["delay_period_percent"] = format_number(period_percent)
-                row["delay_w50_percent"] = format_number(w50_percent)
+                row[OUTPUT_DELAY_COLUMN] = format_number(delay_ms)
+                row[OUTPUT_P0_PERCENT_COLUMN] = format_number(period_percent)
+                row[OUTPUT_W50_PERCENT_COLUMN] = format_number(w50_percent)
                 writer.writerow(row)
 
 

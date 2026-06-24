@@ -1,5 +1,16 @@
 # DEV_NOTES
 
+## 24:6:26::11:22 Intent
+
+Make the output CSV behavior explicit: preserve all original pulsar-table columns and append only the three requested derived columns for time delay, delay divided by `P0` as a percentage, and delay divided by `W50` as a percentage.
+
+## 24:6:26::11:22 What Is Done
+
+- Kept all input columns in their original order in the output CSV.
+- Renamed the derived columns to `time_delay_ms`, `delay_over_P0_percent`, and `delay_over_W50_percent`.
+- Updated README Markdown and HTML to document the preserved columns and derived output names.
+- Rebuilt `dist/TSAS-0.1.0.tar.gz`.
+
 ## 24:6:26::11:19 Intent
 
 Extend `csv/sample_pulsar.csv` with the ATNF v2.8.1 parallax/distance/proper-motion/velocity table previously checked for the same 13 pulsars. Treat `PX` as the ATNF parallax-based distance check for VLBI-style distance availability, preserve blank fields where ATNF reported `*`, rebuild the distribution tarball, and push the update.
