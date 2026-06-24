@@ -1,5 +1,17 @@
 # DEV_NOTES
 
+## 24:6:26::12:00 Intent
+
+Correct the ATNF alternate CSV so its distance column is VLBI/parallax-only rather than ATNF's mixed-source best-estimate `DIST`. Blank distances when no `PX mas` value is listed, and recompute transverse velocities from ATNF proper motion and parallax-only distance for consistency.
+
+## 24:6:26::12:00 What Is Done
+
+- Updated `csv/sample_pulsar_ATNF.csv` so `DIST kpc = 1 / PX mas`.
+- Left `DIST kpc` and `V_trans km/s` blank where `PX mas` is unavailable.
+- Recomputed `V_trans km/s` using `4.74047 * PMTOT * DIST`.
+- Updated README Markdown/HTML and `doc/ATNF_COMPARISON.md` to distinguish ATNF `DIST` from parallax-only distance.
+- Rebuilt `dist/TSAS-0.1.0.tar.gz`.
+
 ## 24:6:26::11:55 Intent
 
 Provide the reference for the dispersion-delay formula and correct the MHz-to-millisecond constant used by the script. The cited Lorimer & Kramer convention gives `4.148808 ms GHz^2 pc^-1 cm^3`; since the CLI accepts MHz and outputs milliseconds, the script should use `4.148808e6`.

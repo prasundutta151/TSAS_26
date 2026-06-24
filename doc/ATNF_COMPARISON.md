@@ -9,7 +9,9 @@ The prompt-image table values are kept as table values. Current catalogue values
 
 The two velocity columns differ because they come from different sources. The prompt image appears to be an older compiled table and does not include a citation in the screenshot. The catalogue column is from the current ATNF query, where `VTRANS` is derived from the catalogue distance and proper motion. If the original table source is available, cite it separately from ATNF.
 
-For a fully catalogue-aligned sample, use `csv/sample_pulsar_ATNF.csv`. It uses ATNF values for the catalogue columns, recomputes `SW50` from ATNF `S1400`, `P0`, and `W50`, carries over `RMS`, `t5sigma`, and `Ton`, and removes `D (21) AU` and `D (22) AU`.
+For a parallax-only sample, use `csv/sample_pulsar_ATNF.csv`. It uses ATNF values for the catalogue columns, recomputes `SW50` from ATNF `S1400`, `P0`, and `W50`, carries over `RMS`, `t5sigma`, and `Ton`, and removes `D (21) AU` and `D (22) AU`. Its `DIST kpc` column is not ATNF's mixed-source `DIST`; it is computed directly as `1 / PX mas` and left blank when `PX mas` is unavailable.
+
+ATNF documents `DIST` as a best-estimate distance using the YMW16 DM-derived distance by default, with other estimates sometimes taking precedence. A measured annual parallax takes precedence only when it is greater than three times its quoted uncertainty, so a filled ATNF `DIST` value without `PX` is not a VLBI/parallax distance.
 
 ## Catalogue-Overlapping Columns
 
