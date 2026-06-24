@@ -1,5 +1,15 @@
 # DEV_NOTES
 
+## 24:6:26::16:32 Intent
+
+Zoom the HI4PI three-panel profile plot to the scientifically useful central velocity range from `-160` to `+160 km/s`.
+
+## 24:6:26::16:32 What Is Done
+
+- Added `--vmin` and `--vmax` options to `script/plot_hi4pi_profiles.py`, defaulting to `-160` and `+160`.
+- Regenerated `csv/hi4pi_profiles_three_panel.png` with the zoomed LSR velocity axis.
+- Updated README Markdown/HTML with the default plot window and override flags.
+
 ## 24:6:26::15:51 Intent
 
 Fetch HI4PI/LAB-successor 21-cm emission profiles for all sample pulsars, keep normalized profile CSV files in `csv/`, and add a plotting script that shows all pulsars across three side-by-side panels.

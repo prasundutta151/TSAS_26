@@ -40,6 +40,8 @@ def build_parser() -> argparse.ArgumentParser:
         default=str(DEFAULT_CSV_DIR / "hi4pi_profiles_three_panel.png"),
         help="Output plot path.",
     )
+    parser.add_argument("--vmin", type=float, default=-160.0, help="Minimum plotted LSR velocity in km/s.")
+    parser.add_argument("--vmax", type=float, default=160.0, help="Maximum plotted LSR velocity in km/s.")
     return parser
 
 
@@ -56,6 +58,7 @@ def main() -> int:
             velocities, temperatures = read_profile(path)
             axis.plot(velocities, temperatures, linewidth=1.2, label=pulsar)
         axis.axhline(0.0, color="0.6", linewidth=0.6)
+        axis.set_xlim(args.vmin, args.vmax)
         axis.set_title(", ".join(group), fontsize=9)
         axis.set_xlabel("LSR velocity (km/s)")
         axis.grid(alpha=0.25, linewidth=0.5)

@@ -51,6 +51,7 @@ delay_ms = 4.148808e6 * DM * (low_mhz^-2 - high_mhz^-2)</code></pre>
   <pre><code>cd rundir
 ./plot_hi4pi_profiles.sh</code></pre>
   <p>The plot is written to <code>csv/hi4pi_profiles_three_panel.png</code>. Each panel contains multiple pulsars so all 13 lines of sight are covered.</p>
+  <p>By default, the plot is zoomed to <code>-160</code> to <code>+160 km/s</code> in LSR velocity; override this with <code>--vmin</code> and <code>--vmax</code> when calling <code>script/plot_hi4pi_profiles.py</code> directly.</p>
   <p>With an explicit output filename:</p>
   <pre><code>python3 ../script/pulsar_delay.py --input pulsars.csv --output pulsars_delay.csv --reference-mhz 1400 --bandwidth-mhz 100</code></pre>
   <p>If the input is <code>../csv/pulsars.csv</code> and <code>--output</code> is omitted, the output is <code>../csv/pulsars_with_delay.csv</code>.</p>

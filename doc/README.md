@@ -94,6 +94,7 @@ cd rundir
 ```
 
 The plot is written to `csv/hi4pi_profiles_three_panel.png`. Each panel contains multiple pulsars so all 13 lines of sight are covered.
+By default, the plot is zoomed to `-160` to `+160 km/s` in LSR velocity; override this with `--vmin` and `--vmax` when calling `script/plot_hi4pi_profiles.py` directly.
 
 With an explicit output filename:
 
