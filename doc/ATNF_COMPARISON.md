@@ -45,8 +45,10 @@ The script computes `delay/P0 (%)` as:
 (delay_ms / P0_ms) * 100
 ```
 
-For example, with the included `rundir/run_example.sh`, B0329+54 has `delay = 0.0775487 ms` and `P0 = 0.715 s = 715 ms`, so:
+For example, B0329+54 has `delay = 0.0775487 ms = 77548.70 ns` and `P0 = 0.715 s = 715 ms`, so:
 
 ```text
 0.0775487 / 715 * 100 = 0.010846 %
 ```
+
+The output CSV rounds this percentage to one decimal place, so very small percentages can appear as `0.0`.

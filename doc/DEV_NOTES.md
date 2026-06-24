@@ -1,5 +1,17 @@
 # DEV_NOTES
 
+## 24:6:26::12:08 Intent
+
+Change output formatting so the delay is reported in nanoseconds to two decimal places, delay percentages are rounded to one decimal place, and `D(3mths) AU`/`D(6mths) AU` are rounded to one decimal place.
+
+## 24:6:26::12:08 What Is Done
+
+- Renamed the derived delay column from `delay (ms)` to `delay (ns)`.
+- Converted delay output from milliseconds to nanoseconds.
+- Added fixed-place output formatting for derived columns.
+- Updated README Markdown/HTML and `doc/ATNF_COMPARISON.md`.
+- Rebuilt `dist/TSAS-0.1.0.tar.gz`.
+
 ## 24:6:26::12:03 Intent
 
 Add end-of-output travel-distance calculations giving how far each pulsar moves in 3 and 6 months in astronomical units, based on a transverse velocity column in km/s.

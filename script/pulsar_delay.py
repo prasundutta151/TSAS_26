@@ -16,7 +16,7 @@ DISPERSION_CONSTANT_MS = 4.148808e6
 DEFAULT_CSV_DIR = Path.cwd() / ".." / "csv"
 JULIAN_YEAR_SECONDS = 365.25 * 24.0 * 60.0 * 60.0
 AU_KM = 149_597_870.7
-OUTPUT_DELAY_COLUMN = "delay (ms)"
+OUTPUT_DELAY_COLUMN = "delay (ns)"
 OUTPUT_P0_PERCENT_COLUMN = "delay/P0 (%)"
 OUTPUT_W50_PERCENT_COLUMN = "delay/W50 (%)"
 OUTPUT_D_3_MONTHS_COLUMN = "D(3mths) AU"
@@ -153,14 +153,14 @@ def process_csv(input_path: Path, output_path: Path, reference_mhz: float, bandw
         )
         velocity_column = find_optional_column(
             headers,
-            {
+            [
                 "V_trans km/s",
                 "Vtrans catalog km/s",
                 "VTRANS ATNF km/s",
                 "Vtrans km/s",
                 "Vtrans table km/s",
                 "Vtrans",
-            },
+            ],
         )
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -204,18 +204,18 @@ def process_csv(input_path: Path, output_path: Path, reference_mhz: float, bandw
                     distance_3_months = transverse_distance_au(velocity_km_s, 0.25)
                     distance_6_months = transverse_distance_au(velocity_km_s, 0.5)
 
-                row[OUTPUT_DELAY_COLUMN] = format_number(delay_ms)
-                row[OUTPUT_P0_PERCENT_COLUMN] = format_number(period_percent)
-                row[OUTPUT_W50_PERCENT_COLUMN] = format_number(w50_percent)
-                row[OUTPUT_D_3_MONTHS_COLUMN] = format_number(distance_3_months)
-                row[OUTPUT_D_6_MONTHS_COLUMN] = format_number(distance_6_months)
+                row[OUTPUT_DELAY_COLUMN] = format_fixed(delay_ms * 1_000_000.0, 2)
+                row[OUTPUT_P0_PERCENT_COLUMN] = format_fixed(period_percent, 1)
+                row[OUTPUT_W50_PERCENT_COLUMN] = format_fixed(w50_percent, 1)
+                row[OUTPUT_D_3_MONTHS_COLUMN] = format_fixed(distance_3_months, 1)
+                row[OUTPUT_D_6_MONTHS_COLUMN] = format_fixed(distance_6_months, 1)
                 writer.writerow(row)
 
 
-def format_number(value: float) -> str:
+def format_fixed(value: float, places: int) -> str:
     if math.isnan(value):
         return ""
-    return f"{value:.6g}"
+    return f"{value:.{places}f}"
 
 
 def build_parser() -> argparse.ArgumentParser:

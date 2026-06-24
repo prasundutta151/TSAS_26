@@ -22,11 +22,13 @@ delay_ms = 4.148808e6 * DM * (low_mhz^-2 - high_mhz^-2)
 
 The script then reports:
 
-- `delay (ms)`
+- `delay (ns)`
 - `delay/P0 (%)`
 - `delay/W50 (%)`
 - `D(3mths) AU`
 - `D(6mths) AU`
+
+The output delay is converted from milliseconds to nanoseconds and rounded to two decimal places. Delay percentages and travel distances are rounded to one decimal place.
 
 `W50` is expected to be given in milliseconds. In the sample table this is the `W50 ms` column, so `delay/W50 (%)` compares two millisecond quantities directly.
 
