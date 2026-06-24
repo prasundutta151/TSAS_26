@@ -13,7 +13,7 @@ The repository includes a `rundir/` folder with two small runner scripts. Runnin
 
 The included `csv/sample_pulsar.csv` file contains the full pulsar list from the prompt image, with dispersion measures added from the ATNF Pulsar Catalogue v2.8.1.
 
-The alternate `csv/sample_pulsar_ATNF.csv` file uses ATNF v2.8.1 values for `P0`, `W50`, `S1400`, `DM`, and `PX mas`. Its `DIST kpc` values are parallax-only distances computed as `1 / PX mas`, and are blank when no parallax is listed. Its `V_trans km/s` values are recomputed from ATNF proper motion and the parallax-only distance. `SW50` is recomputed as `S1400 * P0_ms / W50_ms`, while `RMS`, `t5sigma`, and `Ton` are carried over from the prompt-image sample. The `D (21) AU` and `D (22) AU` columns are omitted from this ATNF-focused sample.
+The alternate `csv/sample_pulsar_ATNF.csv` file uses ATNF v2.8.1 values for `P0`, `W50`, `S1400`, `V_trans`, `DM`, `PX mas`, and best `DIST kpc`. Distances and velocities marked with `*` are ATNF best estimates but are not VLBI/parallax distances. `SW50` is recomputed as `S1400 * P0_ms / W50_ms`, while `RMS`, `t5sigma`, and `Ton` are carried over from the prompt-image sample. The `D (21) AU` and `D (22) AU` columns are omitted from this ATNF-focused sample.
 
 ## Formula
 
@@ -38,6 +38,8 @@ The output delay is converted from milliseconds to nanoseconds and rounded to tw
 `W50` is expected to be given in milliseconds. In the sample table this is the `W50 ms` column, so `delay/W50 (%)` compares two millisecond quantities directly.
 
 The `D(3mths) AU` and `D(6mths) AU` columns use the transverse velocity in km/s, if present, to compute how far the pulsar travels across the sky in 0.25 and 0.5 Julian years. The calculation is `velocity_km_s * elapsed_seconds / 149597870.7`.
+
+If the input transverse velocity has a trailing `*`, the script treats it as numeric but propagates the `*` to `D(3mths) AU` and `D(6mths) AU` to show that a non-parallax distance entered the quoted velocity.
 
 ## Required Columns
 

@@ -1,5 +1,18 @@
 # DEV_NOTES
 
+## 24:6:26::12:46 Intent
+
+Restore ATNF best distances and transverse velocities in the ATNF sample while marking non-VLBI/parallax distances with `*`. Update the calculation code so starred numeric values can still be used, and propagate the `*` to any output travel distances computed from starred transverse velocities.
+
+## 24:6:26::12:46 What Is Done
+
+- Updated `csv/sample_pulsar_ATNF.csv` to include ATNF best `DIST kpc` values and `V_trans km/s` values.
+- Marked non-parallax distance/velocity entries with `*`.
+- Taught `script/pulsar_delay.py` to parse starred numeric values.
+- Propagated a starred velocity marker to `D(3mths) AU` and `D(6mths) AU`.
+- Updated README Markdown/HTML and `doc/ATNF_COMPARISON.md`.
+- Rebuilt `dist/TSAS-0.1.0.tar.gz`.
+
 ## 24:6:26::12:12 Intent
 
 Create two table-specific code entry points and two run-directory shell scripts: one for the original prompt-image sample table and one for the ATNF/parallax-distance sample table.

@@ -53,7 +53,7 @@ def find_optional_column(headers: Iterable[str], aliases: Iterable[str]) -> str 
 
 
 def parse_float(value: str, column: str, row_number: int) -> float:
-    text = (value or "").strip()
+    text = strip_marker(value)
     if not text or text in {"?", "-", "--", "nan", "NaN"}:
         return math.nan
     try:
@@ -62,6 +62,14 @@ def parse_float(value: str, column: str, row_number: int) -> float:
         raise ValueError(
             f"Row {row_number}: column {column!r} contains non-numeric value {value!r}"
         ) from exc
+
+
+def strip_marker(value: str) -> str:
+    return (value or "").strip().rstrip("*").strip()
+
+
+def has_marker(value: str) -> bool:
+    return (value or "").strip().endswith("*")
 
 
 def period_to_ms(period_value: float, period_column: str) -> float:
@@ -181,10 +189,12 @@ def process_csv(input_path: Path, output_path: Path, reference_mhz: float, bandw
                 period = parse_float(row.get(period_column, ""), period_column, row_number)
                 w50_ms = parse_float(row.get(w50_column, ""), w50_column, row_number)
                 if velocity_column:
+                    velocity_has_marker = has_marker(row.get(velocity_column, ""))
                     velocity_km_s = parse_float(
                         row.get(velocity_column, ""), velocity_column, row_number
                     )
                 else:
+                    velocity_has_marker = False
                     velocity_km_s = math.nan
 
                 if math.isnan(dm) or math.isnan(period) or math.isnan(w50_ms):
@@ -207,15 +217,20 @@ def process_csv(input_path: Path, output_path: Path, reference_mhz: float, bandw
                 row[OUTPUT_DELAY_COLUMN] = format_fixed(delay_ms * 1_000_000.0, 2)
                 row[OUTPUT_P0_PERCENT_COLUMN] = format_fixed(period_percent, 1)
                 row[OUTPUT_W50_PERCENT_COLUMN] = format_fixed(w50_percent, 1)
-                row[OUTPUT_D_3_MONTHS_COLUMN] = format_fixed(distance_3_months, 1)
-                row[OUTPUT_D_6_MONTHS_COLUMN] = format_fixed(distance_6_months, 1)
+                row[OUTPUT_D_3_MONTHS_COLUMN] = format_fixed(
+                    distance_3_months, 1, marker=velocity_has_marker
+                )
+                row[OUTPUT_D_6_MONTHS_COLUMN] = format_fixed(
+                    distance_6_months, 1, marker=velocity_has_marker
+                )
                 writer.writerow(row)
 
 
-def format_fixed(value: float, places: int) -> str:
+def format_fixed(value: float, places: int, marker: bool = False) -> str:
     if math.isnan(value):
         return ""
-    return f"{value:.{places}f}"
+    suffix = "*" if marker else ""
+    return f"{value:.{places}f}{suffix}"
 
 
 def build_parser(default_input: str | None = None) -> argparse.ArgumentParser:
