@@ -13,7 +13,7 @@ The repository includes a `rundir/` folder with two small runner scripts. Runnin
 
 The included `csv/sample_pulsar.csv` file contains the full pulsar list from the prompt image, with dispersion measures added from the ATNF Pulsar Catalogue v2.8.1.
 
-The alternate `csv/sample_pulsar_ATNF.csv` file uses ATNF v2.8.1 values for `P0`, `W50`, `S1400`, `V_trans`, `DM`, `PX mas`, and best `DIST kpc`. Distances and velocities marked with `*` are ATNF best estimates but are not VLBI/parallax distances. `SW50` is recomputed as `S1400 * P0_ms / W50_ms`, while `RMS`, `t5sigma`, and `Ton` are carried over from the prompt-image sample. The `D (21) AU` and `D (22) AU` columns are omitted from this ATNF-focused sample.
+The alternate `csv/sample_pulsar_ATNF.csv` file uses ATNF v2.8.1 values for `P0`, `W50`, `S1400`, `V_trans`, `DM`, `PX mas`, and best `DIST kpc`. Distances and velocities marked with `*` are ATNF best estimates but are not VLBI/parallax distances. `SW50` is recomputed as `S1400 * P0_ms / W50_ms`, while `RMS`, `t5sigma`, and `Ton` are carried over from the prompt-image sample. It also includes `HI peak T K`, `Tnoise HI+70 K`, and `tau_5sigma HI`, where `tau_5sigma HI = t5sigma * (HI peak T K + 70 K) / 170 K`. The `D (21) AU` and `D (22) AU` columns are omitted from this ATNF-focused sample.
 
 ## Formula
 

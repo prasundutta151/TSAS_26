@@ -1,5 +1,16 @@
 # DEV_NOTES
 
+## 24:6:26::16:39 Intent
+
+Use each pulsar's HI4PI emission profile peak to replace the fixed `170 K` noise-temperature assumption for the ATNF sample's five-sigma optical-depth sensitivity.
+
+## 24:6:26::16:39 What Is Done
+
+- Added `HI peak T K`, `Tnoise HI+70 K`, and `tau_5sigma HI` to `csv/sample_pulsar_ATNF.csv`.
+- Computed `tau_5sigma HI = t5sigma * (HI peak T K + 70 K) / 170 K`.
+- Verified the ATNF delay runner preserves the new columns in its output.
+- Updated README Markdown/HTML with the new columns and formula.
+
 ## 24:6:26::16:32 Intent
 
 Zoom the HI4PI three-panel profile plot to the scientifically useful central velocity range from `-160` to `+160 km/s`.
