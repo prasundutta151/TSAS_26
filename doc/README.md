@@ -20,9 +20,9 @@ delay_ms = 4.148808e3 * DM * (low_mhz^-2 - high_mhz^-2)
 
 The script then reports:
 
-- `time_delay_ms`
-- `delay_over_P0_percent`
-- `delay_over_W50_percent`
+- `delay (ms)`
+- `delay/P0 (%)`
+- `delay/W50 (%)`
 
 ## Required Columns
 
@@ -65,3 +65,5 @@ The distribution tarball is written to `dist/TSAS-0.1.0.tar.gz`.
 ## Data Note
 
 The sample DM values are from the ATNF Pulsar Catalogue. ATNF requests acknowledgement of the catalogue web address and Manchester, Hobbs, Teoh & Hobbs, AJ, 129, 1993-2006 (2005), when catalogue data are used in publications.
+
+The sample table keeps the prompt-image transverse velocity beside the current catalogue transverse velocity as `Vtrans table km/s` and `Vtrans catalog km/s`. A comparison against ATNF v2.8.1 is in `doc/ATNF_COMPARISON.md`.

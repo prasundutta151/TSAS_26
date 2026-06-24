@@ -14,9 +14,9 @@ from typing import Iterable
 VERSION = "0.1.0"
 DISPERSION_CONSTANT_MS = 4.148808e3
 DEFAULT_CSV_DIR = Path.cwd() / ".." / "csv"
-OUTPUT_DELAY_COLUMN = "time_delay_ms"
-OUTPUT_P0_PERCENT_COLUMN = "delay_over_P0_percent"
-OUTPUT_W50_PERCENT_COLUMN = "delay_over_W50_percent"
+OUTPUT_DELAY_COLUMN = "delay (ms)"
+OUTPUT_P0_PERCENT_COLUMN = "delay/P0 (%)"
+OUTPUT_W50_PERCENT_COLUMN = "delay/W50 (%)"
 
 
 class ColumnLookupError(ValueError):

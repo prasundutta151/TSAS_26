@@ -1,5 +1,18 @@
 # DEV_NOTES
 
+## 24:6:26::11:33 Intent
+
+Verify whether `delay/P0 (%)` is multiplied by 100, rename the derived output columns to the requested presentation form, place old-table and current-catalog transverse velocities side by side, and document differences between prompt-image values and ATNF v2.8.1 where the catalogue has matching parameters.
+
+## 24:6:26::11:33 What Is Done
+
+- Confirmed `delay/P0 (%)` is computed as `(delay_ms / P0_ms) * 100`.
+- Renamed derived output columns to `delay (ms)`, `delay/P0 (%)`, and `delay/W50 (%)`.
+- Renamed/reordered velocity fields in `csv/sample_pulsar.csv` as `Vtrans table km/s` and `Vtrans catalog km/s`.
+- Added `doc/ATNF_COMPARISON.md` with source clarification and parameter differences.
+- Updated README Markdown and HTML.
+- Rebuilt `dist/TSAS-0.1.0.tar.gz`.
+
 ## 24:6:26::11:22 Intent
 
 Make the output CSV behavior explicit: preserve all original pulsar-table columns and append only the three requested derived columns for time delay, delay divided by `P0` as a percentage, and delay divided by `W50` as a percentage.

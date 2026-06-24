@@ -23,7 +23,7 @@
   <pre><code>low_mhz = reference_mhz - bandwidth_mhz / 2
 high_mhz = reference_mhz + bandwidth_mhz / 2
 delay_ms = 4.148808e3 * DM * (low_mhz^-2 - high_mhz^-2)</code></pre>
-  <p>The script then reports <code>time_delay_ms</code>, <code>delay_over_P0_percent</code>, and <code>delay_over_W50_percent</code>.</p>
+  <p>The script then reports <code>delay (ms)</code>, <code>delay/P0 (%)</code>, and <code>delay/W50 (%)</code>.</p>
   <h2>Required Columns</h2>
   <p>The input CSV needs columns for pulsar period, W50 pulse width, and dispersion measure. Common names such as <code>P0 secs</code>, <code>W50 ms</code>, and <code>DM</code> are accepted.</p>
   <h2>Usage</h2>
@@ -38,5 +38,6 @@ delay_ms = 4.148808e3 * DM * (low_mhz^-2 - high_mhz^-2)</code></pre>
   <p>The distribution tarball is written to <code>dist/TSAS-0.1.0.tar.gz</code>.</p>
   <h2>Data Note</h2>
   <p>The sample DM values are from the ATNF Pulsar Catalogue. ATNF requests acknowledgement of the catalogue web address and Manchester, Hobbs, Teoh &amp; Hobbs, AJ, 129, 1993-2006 (2005), when catalogue data are used in publications.</p>
+  <p>The sample table keeps the prompt-image transverse velocity beside the current catalogue transverse velocity as <code>Vtrans table km/s</code> and <code>Vtrans catalog km/s</code>. A comparison against ATNF v2.8.1 is in <code>doc/ATNF_COMPARISON.md</code>.</p>
 </body>
 </html>
