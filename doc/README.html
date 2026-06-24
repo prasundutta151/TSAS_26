@@ -17,6 +17,7 @@
   <p>TSAS adds dispersion-delay columns to pulsar CSV tables.</p>
   <p>The CLI lives in <code>script/</code>. It reads a CSV from <code>../csv</code> relative to the directory where you run the command when a plain filename is supplied, calculates the dispersive time delay across an observing bandwidth, and writes a new CSV in the same directory unless <code>--output</code> is given.</p>
   <p>The repository includes a <code>rundir/</code> folder with a small example script. Running from <code>rundir/</code> makes <code>../csv</code> point to the repository's sample CSV directory.</p>
+  <p>The included <code>csv/sample_pulsar.csv</code> file contains the full pulsar list from the prompt image, with dispersion measures added from the ATNF Pulsar Catalogue v2.8.1.</p>
   <h2>Formula</h2>
   <p>The reference frequency is treated as the center of the band:</p>
   <pre><code>low_mhz = reference_mhz - bandwidth_mhz / 2
@@ -34,5 +35,7 @@ delay_ms = 4.148808e3 * DM * (low_mhz^-2 - high_mhz^-2)</code></pre>
   <p>Current version: <code>0.1.0</code></p>
   <h2>Distribution</h2>
   <p>The distribution tarball is written to <code>dist/TSAS-0.1.0.tar.gz</code>.</p>
+  <h2>Data Note</h2>
+  <p>The sample DM values are from the ATNF Pulsar Catalogue. ATNF requests acknowledgement of the catalogue web address and Manchester, Hobbs, Teoh &amp; Hobbs, AJ, 129, 1993-2006 (2005), when catalogue data are used in publications.</p>
 </body>
 </html>

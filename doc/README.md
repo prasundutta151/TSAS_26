@@ -6,6 +6,8 @@ The CLI lives in `script/`. It reads a CSV from `../csv` relative to the directo
 
 The repository includes a `rundir/` folder with a small example script. Running from `rundir/` makes `../csv` point to the repository's sample CSV directory.
 
+The included `csv/sample_pulsar.csv` file contains the full pulsar list from the prompt image, with dispersion measures added from the ATNF Pulsar Catalogue v2.8.1.
+
 ## Formula
 
 The reference frequency is treated as the center of the band:
@@ -57,3 +59,7 @@ Current version: `0.1.0`
 ## Distribution
 
 The distribution tarball is written to `dist/TSAS-0.1.0.tar.gz`.
+
+## Data Note
+
+The sample DM values are from the ATNF Pulsar Catalogue. ATNF requests acknowledgement of the catalogue web address and Manchester, Hobbs, Teoh & Hobbs, AJ, 129, 1993-2006 (2005), when catalogue data are used in publications.

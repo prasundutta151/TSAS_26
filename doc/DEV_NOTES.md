@@ -1,5 +1,18 @@
 # DEV_NOTES
 
+## 24:6:26::11:18 Intent
+
+Replace the short sample CSV with a complete `sample_pulsar.csv` based on the full pulsar list shown in the prompt image. Preserve the image-derived table columns, add dispersion measures for every listed pulsar, update the example runner and documentation, rebuild the distribution tarball, and push the refreshed repository.
+
+## 24:6:26::11:18 What Is Done
+
+- Renamed `csv/sample_pulsars.csv` to `csv/sample_pulsar.csv`.
+- Added all 13 pulsars visible in the prompt image.
+- Added DM values queried from ATNF Pulsar Catalogue v2.8.1.
+- Updated `rundir/run_example.sh` to use `sample_pulsar.csv`.
+- Updated documentation to describe the sample data source.
+- Rebuilt the distribution tarball.
+
 ## 24:6:26::11:04 Intent
 
 Reorganize the TSAS project so executable code lives under `script/`, user-facing documents live under `doc/`, and a small runnable example lives under `rundir/`. Refresh paths, rebuild the distribution tarball, recommit, and push the revised repository to `prasundutta151/TSAS_26`.
