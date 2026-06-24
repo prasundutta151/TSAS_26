@@ -27,6 +27,7 @@ delay_ms = 4.148808e3 * DM * (low_mhz^-2 - high_mhz^-2)</code></pre>
   <h2>Required Columns</h2>
   <p>The input CSV needs columns for pulsar period, W50 pulse width, and dispersion measure. Common names such as <code>P0 secs</code>, <code>W50 ms</code>, and <code>DM</code> are accepted.</p>
   <h2>Usage</h2>
+  <p>Install and tool notes are in <code>doc/REQUIREMENTS.md</code>.</p>
   <pre><code>python3 ../script/pulsar_delay.py --input pulsars.csv --reference-mhz 1400 --bandwidth-mhz 100</code></pre>
   <p>With an explicit output filename:</p>
   <pre><code>python3 ../script/pulsar_delay.py --input pulsars.csv --output pulsars_delay.csv --reference-mhz 1400 --bandwidth-mhz 100</code></pre>

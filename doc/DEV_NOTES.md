@@ -1,5 +1,16 @@
 # DEV_NOTES
 
+## 24:6:26::11:17 Intent
+
+Add a requirements document under `doc/` that explains what TSAS needs, how to get Python and optional development tools, how to run the CLI without installation, how to install the package locally, and how to rebuild the distribution tarball.
+
+## 24:6:26::11:17 What Is Done
+
+- Added `doc/REQUIREMENTS.md`.
+- Documented that the CLI has no runtime third-party Python dependencies.
+- Added Python, optional development-tool, editable-install, example-runner, and tarball rebuild instructions.
+- Linked the requirements document from the README files.
+
 ## 24:6:26::11:18 Intent
 
 Replace the short sample CSV with a complete `sample_pulsar.csv` based on the full pulsar list shown in the prompt image. Preserve the image-derived table columns, add dispersion measures for every listed pulsar, update the example runner and documentation, rebuild the distribution tarball, and push the refreshed repository.

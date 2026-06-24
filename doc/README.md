@@ -36,6 +36,8 @@ Missing numeric values represented by `?`, `-`, `--`, or a blank cell produce bl
 
 ## Usage
 
+Install and tool notes are in `doc/REQUIREMENTS.md`.
+
 ```bash
 python3 ../script/pulsar_delay.py --input pulsars.csv --reference-mhz 1400 --bandwidth-mhz 100
 ```
