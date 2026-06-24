@@ -1,5 +1,16 @@
 # DEV_NOTES
 
+## 24:6:26::11:19 Intent
+
+Extend `csv/sample_pulsar.csv` with the ATNF v2.8.1 parallax/distance/proper-motion/velocity table previously checked for the same 13 pulsars. Treat `PX` as the ATNF parallax-based distance check for VLBI-style distance availability, preserve blank fields where ATNF reported `*`, rebuild the distribution tarball, and push the update.
+
+## 24:6:26::11:19 What Is Done
+
+- Added `PX mas`, `DIST kpc`, `PMTOT mas/yr`, and `VTRANS ATNF km/s` columns to `csv/sample_pulsar.csv`.
+- Filled values for all 13 pulsars where ATNF v2.8.1 reports them.
+- Left missing ATNF `*` values blank in the CSV.
+- Rebuilt `dist/TSAS-0.1.0.tar.gz`.
+
 ## 24:6:26::11:17 Intent
 
 Add a requirements document under `doc/` that explains what TSAS needs, how to get Python and optional development tools, how to run the CLI without installation, how to install the package locally, and how to rebuild the distribution tarball.
