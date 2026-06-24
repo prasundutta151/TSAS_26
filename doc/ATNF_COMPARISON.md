@@ -9,6 +9,8 @@ The prompt-image table values are kept as table values. Current catalogue values
 
 The two velocity columns differ because they come from different sources. The prompt image appears to be an older compiled table and does not include a citation in the screenshot. The catalogue column is from the current ATNF query, where `VTRANS` is derived from the catalogue distance and proper motion. If the original table source is available, cite it separately from ATNF.
 
+For a fully catalogue-aligned sample, use `csv/sample_pulsar_ATNF.csv`. It uses ATNF values for the catalogue columns, recomputes `SW50` from ATNF `S1400`, `P0`, and `W50`, carries over `RMS`, `t5sigma`, and `Ton`, and removes `D (21) AU` and `D (22) AU`.
+
 ## Catalogue-Overlapping Columns
 
 ATNF has direct matches for `P0`, `W50`, `S1400`, `DM`, and `VTRANS`. The sample table also has `SW50`, `RMS`, `t5sigma`, `Ton`, `D (21) AU`, and `D (22) AU`; those are not direct ATNF catalogue fields in this check.

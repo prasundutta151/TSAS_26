@@ -1,5 +1,17 @@
 # DEV_NOTES
 
+## 24:6:26::11:47 Intent
+
+Add an alternate ATNF-focused sample CSV that uses ATNF v2.8.1 values for `P0`, `W50`, `S1400`, `V_trans`, `DM`, `PX mas`, and `DIST kpc`, carries over `RMS`, `t5sigma`, and `Ton` from the existing sample, recomputes `SW50` from the ATNF quantities, and removes `D (21) AU` and `D (22) AU`.
+
+## 24:6:26::11:47 What Is Done
+
+- Added `csv/sample_pulsar_ATNF.csv`.
+- Recomputed `SW50 mJy` as `S1400 mJy * P0_ms / W50_ms`.
+- Left missing ATNF `PX` and `V_trans` values blank.
+- Updated README Markdown/HTML and `doc/ATNF_COMPARISON.md`.
+- Rebuilt `dist/TSAS-0.1.0.tar.gz`.
+
 ## 24:6:26::11:37 Intent
 
 Add an explicit documentation note that `W50` is given in milliseconds, so `delay/W50 (%)` compares the computed delay in milliseconds with a millisecond pulse-width value.
