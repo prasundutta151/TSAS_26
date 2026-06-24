@@ -43,6 +43,14 @@ delay_ms = 4.148808e6 * DM * (low_mhz^-2 - high_mhz^-2)</code></pre>
 ./run_atnf_table.sh</code></pre>
   <p>The generic CLI can still be used with any compatible CSV:</p>
   <pre><code>python3 ../script/pulsar_delay.py --input pulsars.csv --reference-mhz 1400 --bandwidth-mhz 100</code></pre>
+  <p>To fetch HI4PI Gaussian 21-cm profiles for all sample pulsars:</p>
+  <pre><code>cd rundir
+./fetch_hi4pi_profiles.sh</code></pre>
+  <p>This writes one profile CSV per pulsar under <code>csv/</code>, plus <code>csv/hi4pi_profile_index.csv</code>.</p>
+  <p>To make the three-panel profile plot:</p>
+  <pre><code>cd rundir
+./plot_hi4pi_profiles.sh</code></pre>
+  <p>The plot is written to <code>csv/hi4pi_profiles_three_panel.png</code>. Each panel contains multiple pulsars so all 13 lines of sight are covered.</p>
   <p>With an explicit output filename:</p>
   <pre><code>python3 ../script/pulsar_delay.py --input pulsars.csv --output pulsars_delay.csv --reference-mhz 1400 --bandwidth-mhz 100</code></pre>
   <p>If the input is <code>../csv/pulsars.csv</code> and <code>--output</code> is omitted, the output is <code>../csv/pulsars_with_delay.csv</code>.</p>
@@ -54,5 +62,6 @@ delay_ms = 4.148808e6 * DM * (low_mhz^-2 - high_mhz^-2)</code></pre>
   <p>The sample DM values are from the ATNF Pulsar Catalogue. ATNF requests acknowledgement of the catalogue web address and Manchester, Hobbs, Teoh &amp; Hobbs, AJ, 129, 1993-2006 (2005), when catalogue data are used in publications.</p>
   <p>The sample table keeps the prompt-image transverse velocity beside the current catalogue transverse velocity as <code>Vtrans table km/s</code> and <code>Vtrans catalog km/s</code>. A comparison against ATNF v2.8.1 is in <code>doc/ATNF_COMPARISON.md</code>.</p>
   <p>The dispersion-delay constant follows Lorimer &amp; Kramer, <em>Handbook of Pulsar Astronomy</em> (Cambridge University Press, 2005): <code>4.148808 ms GHz^2 pc^-1 cm^3</code>. With frequencies supplied in MHz, this becomes <code>4.148808e6 ms MHz^2 pc^-1 cm^3</code>.</p>
+  <p>The HI profile CSVs were fetched from the Bonn AIfA H I Profile Search using the HI4PI Gaussian profile output. The service describes the profiles as generated on the fly with Gaussian-kernel interpolation and cites HI4PI Collaboration, Ben Bekhti et al., A&amp;A, 594, A116 (2016).</p>
 </body>
 </html>

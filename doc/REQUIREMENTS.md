@@ -1,10 +1,12 @@
 # Requirements
 
-TSAS is intentionally small. The pulsar-delay CLI uses only the Python standard library, so there are no runtime Python packages to install.
+TSAS is intentionally small. The pulsar-delay CLI uses only the Python standard library. The HI4PI fetch and plotting utilities use `requests` and `matplotlib`.
 
 ## Required
 
 - Python 3.9 or newer
+- `requests`
+- `matplotlib`
 
 Check your Python version:
 
@@ -16,6 +18,7 @@ On macOS, install Python with Homebrew if `python3` is not available:
 
 ```bash
 brew install python
+python3 -m pip install requests matplotlib
 ```
 
 On Debian or Ubuntu:
@@ -23,6 +26,7 @@ On Debian or Ubuntu:
 ```bash
 sudo apt update
 sudo apt install python3
+python3 -m pip install requests matplotlib
 ```
 
 ## Run Without Installing

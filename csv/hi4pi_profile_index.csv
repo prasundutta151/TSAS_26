@@ -1,0 +1,14 @@
+pulsar,profile_file,glon_deg,glat_deg,raj,decj,beam_deg,velocity_min_km_s,velocity_max_km_s,source,nhi_cm-2
+B0329+54,hi4pi_profile_B0329p54.csv,144.995,-1.221,03:32:59.4,+54:34:43.3,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.814E+22
+B0736-40,hi4pi_profile_B0736m40.csv,254.193,-9.192,07:38:32.3,-40:42:40.1,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.291E+22
+B0950+08,hi4pi_profile_B0950p08.csv,228.908,43.697,09:53:09.3,+07:55:35.7,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.304E+21
+B1133+16,hi4pi_profile_B1133p16.csv,241.895,69.196,11:36:03.1,+15:51:14.1,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.374E+21
+B1556-44,hi4pi_profile_B1556m44.csv,334.540,6.367,15:59:41.5,-44:38:45.9,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.297E+22
+B1641-45,hi4pi_profile_B1641m45.csv,339.193,-0.195,16:44:49.2,-45:59:09.7,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.228E+23
+B1642-03,hi4pi_profile_B1642m03.csv,14.114,26.062,16:45:02.0,-03:17:57.8,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.857E+21
+B1713-40,hi4pi_profile_B1713m40.csv,346.759,-1.893,17:17:52.3,-41:03:17.8,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.657E+22
+B1929+10,hi4pi_profile_B1929p10.csv,47.382,-3.885,19:32:14.0,+10:59:33.3,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.359E+22
+B1933+16,hi4pi_profile_B1933p16.csv,52.436,-2.093,19:35:47.8,+16:16:39.9,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.647E+22
+B2016+28,hi4pi_profile_B2016p28.csv,68.099,-3.983,20:18:03.8,+28:39:54.2,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.361E+22
+B2020+28,hi4pi_profile_B2020p28.csv,68.863,-4.671,20:22:37.0,+28:54:23.1,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.334E+22
+B2021+51,hi4pi_profile_B2021p51.csv,87.862,8.380,20:22:49.8,+51:54:50.2,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.233E+22

@@ -77,6 +77,24 @@ The generic CLI can still be used with any compatible CSV:
 python3 ../script/pulsar_delay.py --input pulsars.csv --reference-mhz 1400 --bandwidth-mhz 100
 ```
 
+To fetch HI4PI Gaussian 21-cm profiles for all sample pulsars:
+
+```bash
+cd rundir
+./fetch_hi4pi_profiles.sh
+```
+
+This writes one profile CSV per pulsar under `csv/`, plus `csv/hi4pi_profile_index.csv`.
+
+To make the three-panel profile plot:
+
+```bash
+cd rundir
+./plot_hi4pi_profiles.sh
+```
+
+The plot is written to `csv/hi4pi_profiles_three_panel.png`. Each panel contains multiple pulsars so all 13 lines of sight are covered.
+
 With an explicit output filename:
 
 ```bash
@@ -104,3 +122,5 @@ The sample DM values are from the ATNF Pulsar Catalogue. ATNF requests acknowled
 The sample table keeps the prompt-image transverse velocity beside the current catalogue transverse velocity as `Vtrans table km/s` and `Vtrans catalog km/s`. A comparison against ATNF v2.8.1 is in `doc/ATNF_COMPARISON.md`.
 
 The dispersion-delay constant follows Lorimer & Kramer, *Handbook of Pulsar Astronomy* (Cambridge University Press, 2005): `4.148808 ms GHz^2 pc^-1 cm^3`. With frequencies supplied in MHz, this becomes `4.148808e6 ms MHz^2 pc^-1 cm^3`.
+
+The HI profile CSVs were fetched from the Bonn AIfA H I Profile Search using the HI4PI Gaussian profile output. The service describes the profiles as generated on the fly with Gaussian-kernel interpolation and cites HI4PI Collaboration, Ben Bekhti et al., A&A, 594, A116 (2016).

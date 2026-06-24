@@ -8,6 +8,10 @@ version = "0.1.0"
 description = "Compute pulsar dispersion delay across a bandwidth from CSV tables."
 readme = "doc/README.md"
 requires-python = ">=3.9"
+dependencies = [
+  "matplotlib",
+  "requests"
+]
 authors = [
   { name = "Prasun Dutta" }
 ]
@@ -17,6 +21,8 @@ license = { text = "MIT" }
 pulsar-delay = "script.pulsar_delay:main"
 pulsar-delay-old-table = "script.pulsar_delay_old_table:main"
 pulsar-delay-atnf-table = "script.pulsar_delay_atnf_table:main"
+fetch-hi4pi-profiles = "script.fetch_hi4pi_profiles:main"
+plot-hi4pi-profiles = "script.plot_hi4pi_profiles:main"
 
 [tool.setuptools]
 packages = ["script"]

@@ -1,5 +1,20 @@
 # DEV_NOTES
 
+## 24:6:26::15:51 Intent
+
+Fetch HI4PI/LAB-successor 21-cm emission profiles for all sample pulsars, keep normalized profile CSV files in `csv/`, and add a plotting script that shows all pulsars across three side-by-side panels.
+
+## 24:6:26::15:51 What Is Done
+
+- Added `script/fetch_hi4pi_profiles.py` to query the Bonn AIfA H I Profile Search for HI4PI Gaussian profiles.
+- Added one `csv/hi4pi_profile_*.csv` file per pulsar, each with 801 velocity/brightness-temperature rows.
+- Added `csv/hi4pi_profile_index.csv` with coordinates, beam, velocity window, source, and column-density metadata.
+- Added `script/plot_hi4pi_profiles.py` and `rundir/plot_hi4pi_profiles.sh`.
+- Added `rundir/fetch_hi4pi_profiles.sh`.
+- Generated `csv/hi4pi_profiles_three_panel.png`.
+- Updated README Markdown/HTML and requirements documentation.
+- Rebuilt `dist/TSAS-0.1.0.tar.gz`.
+
 ## 24:6:26::12:46 Intent
 
 Restore ATNF best distances and transverse velocities in the ATNF sample while marking non-VLBI/parallax distances with `*`. Update the calculation code so starred numeric values can still be used, and propagate the `*` to any output travel distances computed from starred transverse velocities.
