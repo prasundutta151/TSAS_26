@@ -1,5 +1,17 @@
 # DEV_NOTES
 
+## 24:6:26::12:03 Intent
+
+Add end-of-output travel-distance calculations giving how far each pulsar moves in 3 and 6 months in astronomical units, based on a transverse velocity column in km/s.
+
+## 24:6:26::12:03 What Is Done
+
+- Added `D(3mths) AU` and `D(6mths) AU` output columns at the end of generated CSVs.
+- Added optional transverse-velocity column detection, preferring `V_trans km/s`, `Vtrans catalog km/s`, and related names.
+- Used 0.25 and 0.5 Julian years for 3 and 6 months, with `1 AU = 149597870.7 km`.
+- Updated README Markdown and HTML.
+- Rebuilt `dist/TSAS-0.1.0.tar.gz`.
+
 ## 24:6:26::12:00 Intent
 
 Correct the ATNF alternate CSV so its distance column is VLBI/parallax-only rather than ATNF's mixed-source best-estimate `DIST`. Blank distances when no `PX mas` value is listed, and recompute transverse velocities from ATNF proper motion and parallax-only distance for consistency.

@@ -14,9 +14,13 @@ from typing import Iterable
 VERSION = "0.1.0"
 DISPERSION_CONSTANT_MS = 4.148808e6
 DEFAULT_CSV_DIR = Path.cwd() / ".." / "csv"
+JULIAN_YEAR_SECONDS = 365.25 * 24.0 * 60.0 * 60.0
+AU_KM = 149_597_870.7
 OUTPUT_DELAY_COLUMN = "delay (ms)"
 OUTPUT_P0_PERCENT_COLUMN = "delay/P0 (%)"
 OUTPUT_W50_PERCENT_COLUMN = "delay/W50 (%)"
+OUTPUT_D_3_MONTHS_COLUMN = "D(3mths) AU"
+OUTPUT_D_6_MONTHS_COLUMN = "D(6mths) AU"
 
 
 class ColumnLookupError(ValueError):
@@ -37,6 +41,15 @@ def find_column(headers: Iterable[str], aliases: Iterable[str]) -> str:
     raise ColumnLookupError(
         "Could not find any of these columns: " + ", ".join(sorted(aliases))
     )
+
+
+def find_optional_column(headers: Iterable[str], aliases: Iterable[str]) -> str | None:
+    normalized = {normalize_header(header): header for header in headers}
+    for alias in aliases:
+        key = normalize_header(alias)
+        if key in normalized:
+            return normalized[key]
+    return None
 
 
 def parse_float(value: str, column: str, row_number: int) -> float:
@@ -66,6 +79,10 @@ def delay_across_band_ms(dm: float, reference_mhz: float, bandwidth_mhz: float) 
             "Reference frequency minus half the bandwidth must be greater than 0 MHz"
         )
     return DISPERSION_CONSTANT_MS * dm * ((low_mhz**-2) - (high_mhz**-2))
+
+
+def transverse_distance_au(velocity_km_s: float, year_fraction: float) -> float:
+    return velocity_km_s * JULIAN_YEAR_SECONDS * year_fraction / AU_KM
 
 
 def resolve_input_path(input_value: str) -> Path:
@@ -134,12 +151,25 @@ def process_csv(input_path: Path, output_path: Path, reference_mhz: float, bandw
                 "dm pc cm-3",
             },
         )
+        velocity_column = find_optional_column(
+            headers,
+            {
+                "V_trans km/s",
+                "Vtrans catalog km/s",
+                "VTRANS ATNF km/s",
+                "Vtrans km/s",
+                "Vtrans table km/s",
+                "Vtrans",
+            },
+        )
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
         output_fields = headers + [
             OUTPUT_DELAY_COLUMN,
             OUTPUT_P0_PERCENT_COLUMN,
             OUTPUT_W50_PERCENT_COLUMN,
+            OUTPUT_D_3_MONTHS_COLUMN,
+            OUTPUT_D_6_MONTHS_COLUMN,
         ]
 
         with output_path.open("w", newline="", encoding="utf-8") as output_file:
@@ -150,6 +180,12 @@ def process_csv(input_path: Path, output_path: Path, reference_mhz: float, bandw
                 dm = parse_float(row.get(dm_column, ""), dm_column, row_number)
                 period = parse_float(row.get(period_column, ""), period_column, row_number)
                 w50_ms = parse_float(row.get(w50_column, ""), w50_column, row_number)
+                if velocity_column:
+                    velocity_km_s = parse_float(
+                        row.get(velocity_column, ""), velocity_column, row_number
+                    )
+                else:
+                    velocity_km_s = math.nan
 
                 if math.isnan(dm) or math.isnan(period) or math.isnan(w50_ms):
                     delay_ms = math.nan
@@ -161,9 +197,18 @@ def process_csv(input_path: Path, output_path: Path, reference_mhz: float, bandw
                     period_percent = (delay_ms / period_ms) * 100.0
                     w50_percent = (delay_ms / w50_ms) * 100.0
 
+                if math.isnan(velocity_km_s):
+                    distance_3_months = math.nan
+                    distance_6_months = math.nan
+                else:
+                    distance_3_months = transverse_distance_au(velocity_km_s, 0.25)
+                    distance_6_months = transverse_distance_au(velocity_km_s, 0.5)
+
                 row[OUTPUT_DELAY_COLUMN] = format_number(delay_ms)
                 row[OUTPUT_P0_PERCENT_COLUMN] = format_number(period_percent)
                 row[OUTPUT_W50_PERCENT_COLUMN] = format_number(w50_percent)
+                row[OUTPUT_D_3_MONTHS_COLUMN] = format_number(distance_3_months)
+                row[OUTPUT_D_6_MONTHS_COLUMN] = format_number(distance_6_months)
                 writer.writerow(row)
 
 

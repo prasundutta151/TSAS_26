@@ -25,8 +25,12 @@ The script then reports:
 - `delay (ms)`
 - `delay/P0 (%)`
 - `delay/W50 (%)`
+- `D(3mths) AU`
+- `D(6mths) AU`
 
 `W50` is expected to be given in milliseconds. In the sample table this is the `W50 ms` column, so `delay/W50 (%)` compares two millisecond quantities directly.
+
+The `D(3mths) AU` and `D(6mths) AU` columns use the transverse velocity in km/s, if present, to compute how far the pulsar travels across the sky in 0.25 and 0.5 Julian years. The calculation is `velocity_km_s * elapsed_seconds / 149597870.7`.
 
 ## Required Columns
 
@@ -35,6 +39,8 @@ The input CSV needs columns for:
 - pulsar period, such as `P0`, `P0 secs`, `period`, or `period_ms`
 - W50 pulse width in milliseconds, such as `W50` or `W50 ms`
 - dispersion measure, such as `DM` or `dispersion measure`
+
+For the travel-distance columns, the script also uses a transverse-velocity column when present, preferring names such as `V_trans km/s`, `Vtrans catalog km/s`, or `Vtrans km/s`.
 
 Missing numeric values represented by `?`, `-`, `--`, or a blank cell produce blank delay outputs for that row.
 
