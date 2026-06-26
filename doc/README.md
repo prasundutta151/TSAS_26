@@ -17,7 +17,7 @@ The alternate `csv/sample_pulsar_ATNF.csv` file uses ATNF v2.8.1 values for `P0`
 
 The `csv/sample_new_pulsar_ATNF.csv` file has the same columns as `csv/sample_pulsar_ATNF.csv`, but contains the additional ATNF pulsars B0355+54, B0833-45, B0835-41, B1706-16, B1737-30, B1742-30, and B1749-28. It uses ATNF proper motions and parallax distances where `PX mas` exists, otherwise it keeps the supplied ATNF distance and marks that non-parallax distance with `*`. HI4PI profile peaks are included for the Table 2 calculation.
 
-Proposal-ready derived tables are written as `csv/Table1.csv`, `latex/Table1.tex`, `csv/Table2.csv`, and `latex/Table2.tex`.
+Proposal-ready derived tables are written as `csv/Table1.csv`, `latex/Table1.tex`, `csv/Table2.csv`, and `latex/Table2.tex`. `Table2` combines the original ATNF sample and the new-pulsar sample, sorted by the four digits after `B` in the pulsar name.
 
 ## Formula
 

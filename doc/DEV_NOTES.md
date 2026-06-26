@@ -1,5 +1,16 @@
 # DEV_NOTES
 
+## 26:6:26::19:42 Intent
+
+Regenerate `Table2` so it includes both the original Table 1 pulsars and the new pulsars, ordered by the four digits after `B` in each pulsar name.
+
+## 26:6:26::19:42 What Is Done
+
+- Combined `csv/sample_pulsar_ATNF.csv` and `csv/sample_new_pulsar_ATNF.csv` for the Table 2 calculation.
+- Sorted the combined table by the numeric B-name prefix.
+- Regenerated `csv/Table2.csv` and `latex/Table2.tex` with all 20 pulsars.
+- Updated README Markdown/HTML to describe the combined Table 2 ordering.
+
 ## 26:6:26::19:40 Intent
 
 Calculate the new-pulsar proposal CSV and LaTeX table as `Table2`, using parallax-derived distances where ATNF gives parallax and supplied ATNF distances otherwise.
