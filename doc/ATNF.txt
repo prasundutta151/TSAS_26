@@ -1,0 +1,32 @@
+
+ATNF Pulsar Catalogue
+
+Catalogue Version: 2.8.1
+
+ ---------------------------------------------------------------------------------------------------------------------------------------------------
+#     NAME                 P0                                    DM                           W50                       S1400
+                           (s)                                   (cm^-3 pc)                   (ms)                      (mJy)
+---------------------------------------------------------------------------------------------------------------------------------------------------
+1     B0329+54  cp68       0.714519699726          4  hlk+04     26.76410      10  hsh+12     6.6         0  lylg95     203         57  lylg95 
+2     B0736-40  lvw68      0.3749207359442        15  jbv+19     160.896        3  pkj+13     25          0  pkj+21     112.6        5  jsd+21 
+3     B0950+08  phbc68     0.2530654277593         4  kjk+24     2.96927        8  srb+15     8.6         0  pkj+21     100         40  jvk+18 
+4     B1133+16  phbc68     1.1879172746306        13  kjk+24     4.8407         4  bkk+16     5.8         0  pkj+21     20          10  jvk+18 
+5     B1556-44  vl72       0.257057211889          4  kjk+24     56.037         2  kjk+24     6.3         0  pkj+21     37           8  jk18 
+
+6     B1641-45  kac+73     0.4550782016717        19  jbv+19     478.66         4  sjd+21     8.0         0  jk18       300         60  jvk+18 
+7     B1642-03  ht69       0.3876916862626         5  kjk+24     35.7555        8  srb+15     3.8         0  pkj+21     25.76        3  jsd+21 
+8     B1713-40  jlm+92     0.88771945634           3  jbv+19     306.90        10  khs+14     9.6         0  jk18       1.1          2  jk18 
+9     B1929+10  lvw68      0.22651892659397        8  kjk+24     3.18321       16  bkk+16     5.6        10  dmo+24     29           6  jk18 
+10    B1933+16  dl70       0.35874514019893       10  kjk+24     158.6394      10  kjk+24     6.5         2  whx+23     58.0        10  jk18 
+
+11    B2016+28  csl68      0.5579534804225         7  hlk+04     14.1977        6  srb+15     15.5        6  dmo+24     30          13  lylg95 
+12    B2020+28  fss73      0.3434021577860        13  hlk+04     24.63109      18  bkk+16     10.4        2  dmo+24     38           0  gg74 
+13    B2021+51  dl70       0.529196917808         17  hlk+04     22.5497        6  bkk+16     11.9        3  whx+23     27           9  lylg95 
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+PLEASE READ: If you intend to use these data in a publication, we request that you:
+Acknowledge use of the ATNF Pulsar Catalogue, both by giving the Catalogue web address and by referencing the paper: Manchester, R. N., Hobbs, G.B., Teoh, A. & Hobbs, M., AJ, 129, 1993-2006 (2005)
+Where practical, reference the original papers containing the table data:
+Reference listing in basic format
+Reference listing in bbl format
+Thank you!
