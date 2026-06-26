@@ -1,5 +1,17 @@
 # DEV_NOTES
 
+## 26:6:26::19:24 Intent
+
+Add a separate ATNF-style CSV for the pulsars present in the user's newer ATNF table but absent from the existing ATNF sample.
+
+## 26:6:26::19:24 What Is Done
+
+- Added `csv/sample_new_pulsar_ATNF.csv` with the same columns as `csv/sample_pulsar_ATNF.csv`.
+- Included B0355+54, B0833-45, B0835-41, B1706-16, B1737-30, B1742-30, and B1749-28.
+- Recomputed `SW50 mJy` as `S1400 mJy * P0_ms / W50_ms`.
+- Left columns blank where the supplied ATNF table did not provide values.
+- Updated README Markdown/HTML to mention the new file.
+
 ## 24:6:26::16:39 Intent
 
 Use each pulsar's HI4PI emission profile peak to replace the fixed `170 K` noise-temperature assumption for the ATNF sample's five-sigma optical-depth sensitivity.

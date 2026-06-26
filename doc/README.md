@@ -15,6 +15,8 @@ The included `csv/sample_pulsar.csv` file contains the full pulsar list from the
 
 The alternate `csv/sample_pulsar_ATNF.csv` file uses ATNF v2.8.1 values for `P0`, `W50`, `S1400`, `V_trans`, `DM`, `PX mas`, and best `DIST kpc`. Distances and velocities marked with `*` are ATNF best estimates but are not VLBI/parallax distances. `SW50` is recomputed as `S1400 * P0_ms / W50_ms`, while `RMS`, `t5sigma`, and `Ton` are carried over from the prompt-image sample. It also includes `HI peak T K`, `Tnoise HI+70 K`, and `tau_5sigma HI`, where `tau_5sigma HI = t5sigma * (HI peak T K + 70 K) / 170 K`. The `D (21) AU` and `D (22) AU` columns are omitted from this ATNF-focused sample.
 
+The `csv/sample_new_pulsar_ATNF.csv` file has the same columns as `csv/sample_pulsar_ATNF.csv`, but contains the additional ATNF pulsars B0355+54, B0833-45, B0835-41, B1706-16, B1737-30, B1742-30, and B1749-28. Columns not present in the supplied ATNF table, such as `RMS mJy`, `t5sigma`, HI peak temperature, `Ton hrs`, and `PX mas`, are left blank.
+
 ## Formula
 
 The reference frequency is treated as the center of the band:
