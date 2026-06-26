@@ -1,0 +1,221 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage[colorlinks=true,allcolors=blue]{hyperref}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{amssymb}
+\usepackage{natbib}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage[most]{tcolorbox}
+\usepackage{bm}
+\usepackage{wrapfig}
+\usepackage{floatrow}
+\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{lipsum}
+
+\definecolor{mycolor}{rgb}{0.122, 0.435, 0.698}
+\definecolor{mycolor2}{rgb}{0.122, 0.435, 0.698}
+
+\definecolor{darkgoldenrod}{rgb}{0.72, 0.53, 0.04}
+\definecolor{royalblue}{rgb}{0, 0, 0.5}
+\definecolor{redviolet}{rgb}{3.14, 0.97, 0.30}
+\newmdenv[innerlinewidth=0.5pt, roundcorner=4pt,linecolor=mycolor,backgroundcolor=mycolor2!9,
+innerleftmargin=6pt,innerrightmargin=6pt,innertopmargin=6pt,
+innerbottommargin=6pt]{mybox}
+
+\textheight 9.5in
+\textwidth 7.1in
+\oddsidemargin -0.25in
+\evensidemargin -0.0in
+\topmargin -0.75in
+\parindent 0.3in
+
+\newcommand{\hi}{H{\sc i}}
+\newcommand{\cm}{cm$^{-2}$}
+
+\def\apj{ Astrophysical Journal}
+\def\apjl{ Astrophysical Journal Letters}
+\def\apjs{ Astrophysical Journal Supplement Series}
+\def\aap{ Astronomy and Astrophysics}
+\def\aapr{ Astronomy and Astrophysics Review}
+\def\aaps{ Astronomy and Astrophysics Suppliment}
+\def\mnras{ Monthly Notices of Royal Astronomical Society}
+\def\mnrasl{ Monthly Notices of Royal Astronomical Society: Letters}
+\def\araa{ Annual Review of Astronomy \& Astrophysics}
+\def\aj{ Astronomical Journal}
+\def\prd{ Physical Review D}
+\def\pre{ Physical Review E}
+\def\prl{ Physical Review Letters}
+\def\phyrep{ Physics Report}
+\def\japa{ Journal of Astrophysics and Astronomy}
+\def\jcap{ Journal of Cosmology and Astroparticle Physics}
+\def\pasp{ Astronomical Society of the Pacific, Publications}
+\def\skytel{ Sky and Telescope}
+\def\tifr{ Tata Institute of Fundamental Rrsearch: deemed University}
+\def\memras{ Member of Royal Astronomical Society}
+\def\AA{$\AA$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+%\title{Scientific Justification : Observing Tiny Scale Atomic Structures in the Cold
+%  Neutral Medium}
+%\date{}
+%\maketitle
+%\section{Introduction}
+\noindent {\color{royalblue} \large \bf Background}
+\vskip 0.05in 
+The atomic component constitutes one of the most important phases of the 
+interstellar medium (ISM) and has hence been the focus of detailed studies, mostly through the \hi~21cm transition, for nearly half a century (e.g. Kulkarni \& Heiles 1988). Despite this, we still do not have a good understanding of the physical characteristics of this phase, including the typical morphology of \hi\ ``clouds'', the timescales of their formation and destruction (i.e. whether they are transient or relatively stable structures), the nature of the equilibrium between ``cold'' and ``warm'' phases, etc. One of the open questions concerns the presence of small-scale structure, on scales significantly smaller than a parsec, in the ISM. Perhaps the first evidence for such structures was seen in VLBI observations of \hi~21cm absorption towards the compact radio source 3C147, which showed spatial variability in the \hi~21cm absorption profile on scales of $\sim 70$~AU (Dieter et al. 1976; Diamond et al. 1989). Similar results have been obtained in later VLBI studies of a few other sources, with the most extreme example being the changes in absorption on scales of $\sim 10-20$~AU found by Faison et al. (1998) towards 3C138 (see also Brogan et al. 2005; Roy et al. FILL; FILL). Recently, Rybarczyk et al. (2020) found evidence of spatial variation in the \hi~21cm opacity (at the level of $\approx 0.03-0.5$) in 13 of 14 radio sources with multi-component structure, on scales of few to thousands of AU. Further evidence for small-scale structure in atomic \hi\ was found in the observed time variability in the \hi~21cm absorption profiles obtained towards pulsars (e.g. Deshpande et al. 1992; Frail et al. 1994). However, the initial claims for ubiquitous and significant time variations in the \hi~21cm optical depth towards pulsars have not been confirmed in later studies. (e.g. Johnston et al. 2003; Stanimirovic et al. 2003, 2010). Recently, more detailed studies of individual pulsars have indeed found a few cases of such changes in the \hi~21cm optical depth (e.g. Liu et al. 2025; Jiang et al. 2025). Additional evidence stems from studies of Na{\sc i} absorption towards nearby pairs of stars (eg. Watson \& Meyer 1996; Points et al. 2004), which show varying absorption in the local ISM on scales of hundreds of AU. Finally, Braun \& Kanekar (2005) found a new population of tiny cold \hi\ clouds, of size $\sim 1000$~AU and low \hi\ column densities, $\sim few \times 10^{18}$~\cm\ (see also Stanimirovic \& Heiles 2005).
+
+% While Deshpande (2000) points out that the observed variations 
+% do not require the presence of physical clouds, but can arise simply from realistic 
+% ISM structure functions, due to statistical fluctuations in the path length 
+% spatial position, 
+
+On theoretical grounds, compressible fluid turbulence, probably driven mainly by supernova shocks, is expected to generate a hierarchy of structures in the ISM, over a range of length scales (e.g. Elmegreen \& Scalo 2004).  Such a physical system is expected to have a scale, namely the inner dissipation scale of the turbulence, beyond which the power spectrum deviates from a power law and structures become rare. Physically, this inner scale can be smaller than the mean free path of the system. Assuming completely hydrodynamic turbulence and \hi\ to be the dominant species, the mean free path in the ISM is $\sim 1 - 100$~AU (Frisch 1995), providing a lower limit to the expected length scale of ISM structures. However, it has been suggested that structures of even smaller (sub-AU) scales can be sustained in the ISM, with support from the magnetic field: the inner scale could thus be even lower than $1-100$~AU. Condensation of the warm medium in collisions within turbulent flows can also give rise to structures on sub-AU scales (e.g. Audit \& Hennebelle 2005). 
+
+The importance of ``Tiny Scale Atomic Structure'' (TSAS), ranging from sub-AU to hundreds of AU scales, stems from the fact that the ubiquitous presence of TSAS appears to require extremely high pressures, two orders of magnitude higher than that typically observed in the diffuse ISM (Diamond et al. 1989). Such over-pressured structures would not be expected to survive for long (typical timescales of $\sim 100$~years; Diamond et al. 1989); their widespread presence would thus require a source of energy injection into the ISM and would suggest that a significant part of the ISM is not in equilibrium. Even for a turbulent medium, the power spectrum of TSAS structures and, hence, the root-mean-square (RMS) variations of the density fluctuations in them, are expected to have a power-law dependence on the length scale; in addition, one expects an inner scale below which the power spectrum shows a cut-off and variations in optical depth are not seen. It is thus of much importance to determine whether or not TSAS is a ubiquitous phenomenon in the ISM, to determine the the inner dissipation scale of ISM turbulence, and thus to understand the physics of the ISM at sub-parsec scales. This proposal attempts to address these issues by using multi-epoch \hi~21cm absorption studies of a large sample of pulsars to trace small-scale structure in the ISM.
+
+\vskip 0.15in
+\noindent {\color{royalblue} \large \bf \hi~21cm absorption studies towards a large pulsar sample}
+\vskip 0.05in
+
+As noted above, TSAS structures were originally discovered through VLBI observations of \hi~21cm opacity variations against a few extended extragalactic radio sources, over length scales of $10-1000$~AU (Dieter et al. 1976; Diamond et al. 1989; Faison et al. 1998; Faison \& Goss 2001; Brogan et al. 2005; Roy et al. 2012). Such observations require angular resolutions of a few milli-arc seconds and background sources with strong extended structure on similar angular scales; so far, such studies have only been possible on a handful of sightlines (e.g. 3C147, 3C138, 3C119, and 3C380). While several VLBI studies of these sources have yielded detections of both angular and temporal variations in the optical depth on length scales of $\sim 25-100$~AU, the paucity of sightlines implies that it is difficult to make a general statement about the frequency of existence or the nature of TSAS from these results. 
+
+Deshpande et al. (1992) suggested an alternative approach towards TSAS studies, through measurements of \hi~21cm opacity variations on sub-AU to tens-of-AU scales towards Galactic pulsars. Since pulsars have typical transverse velocities of $\gtrsim 100$~km/s, their absorption sightlines traverse length scales of a few AU to hundreds of AU over a year, as the pulsar moves in the Galaxy. Comparing the \hi~21cm absorption spectra obtained against a pulsar at different epochs then gives the optical depth variation over these length scales. The large number of bright pulsars at L-band implies that it is, in principle, possible to test the existence of TSAS along a large number of lines of sight in the Galaxy. Such multi-epoch observations would also allow a determination of the dependence of the turbulent power spectrum on length scale, as well as the inner dissipation scale. Of course, the changes in the absorption profiles are expected to be small and hence, both high sensitivity and excellent calibration of the spectral bandpass are needed for a reliable detection of changes in the \hi~21cm absorption profiles.
+
+The first search for varying \hi~21cm absorption on a pulsar sample of reasonable size yielded statistically-significant variation along a number of sightlines (Frail et al. 1994). However, it was later shown that this is likely to have been due to systematic effects (e.g. Johnston et al. 2003; Stanimirovic et al. 2003). Later studies, of about a dozen pulsars so far, have only found definite evidence for opacity changes along a few sightlines, with non-detections of variations in most cases (e.g. Johnston et al. 2003; Stanimirovic et al. 2003, 2010; Liu et al. 2025); this suggests that TSAS may not be ubiquitous in the ISM. However, in many cases, the sensitivity of the studies was insufficient to detect the expected level of variations due to turbulence, extrapolating from the observations of CasA on parsec scales (Deshpande et al. 2000; Deshpande 2000).
+
+It should also be emphasized that the pulsar observations have hitherto been performed with single dish telescopes, usually either the Arecibo, Green Bank or Parkes telescopes (e.g. Frail et al. 1994; Johnston et al. 2003; Stanimirovic et al. 2003, 2010; Liu et al. 2025). The angular resolution of single dishes at 1420~MHz is not sufficient to resolve the  pulsar from other radio sources in the telescope beam. Contributions from these sources may thus give rise to  systematic effects in the spectra. Long-baseline  interferometric studies would obviously not be affected by this problem, as the higher angular resolution allows one to obtain spectra of individual radio sources. Further, it is usually significantly easier to achieve a high spectral dynamic range with interferometers like the GMRT, than with single dishes, allowing higher sensitivity to changes in the observed \hi~21cm profile. 
+
+% Large single dishes like Arecibo also have a high system gain, implying that contributions to the system temperature from high \hi~21cm emission in the beam reduce the sensitivity to opacity variations.
+
+Conversely, the online correlators of large interferometers like GMRT or the VLA have typically had coarse integration times, implying that one does not resolve the on-pulse emission with an interferometer. This is the main reason that all such pulsar \hi~21cm absorption studies have so far been carried out with single-dish telescopes. The recent implementation of a ``gated'' mode in the GMRT Wideband Backend (GWB) enables us, for the first time, to obtain visibilities only for the time intervals when the pulsar is ``on'' (and ``off''), allowing us to carry out the first interferometric monitoring of the \hi~21cm absorption against a pulsar sample, to probe the existence and ubiquity of TSAS in the ISM. 
+
+% to both enhance the sampling at length scales of  tens of AU, and extend the sampling to larger scales. This will help us to  (1)~determine whether TSAS absorption is indeed ubiquitous in the ISM, (2)~to measure  the shape of the turbulent power-law spectrum, and (3)~to measure the inner scale  of ISM turbulence. 
+%\pagebreak
+
+
+\input{Table1}
+
+
+\vskip 0.15in
+\noindent {\color{royalblue} \large \bf The pulsar sample}
+\vskip 0.1in 
+
+We have used the ATNF pulsar database (Manchester et al. 2005) to select our 
+target pulsar sample. Deshpande (2000) gives a scaling relation to estimate 
+the amplitude of the optical depth fluctuations at a given spatial separation, assuming a single power law spectrum extrapolated using the observed power spectrum of optical depth variations along the direction of Cas.A at kpc scales. The typical (RMS) optical depth variations predicted by the model of Deshpande (2000) are $\sim 0.1$ on scales of $\sim 100$~AU. Our pulsar sample has hence been selected based on the requirement of detecting optical depth variations of $\Delta \tau = 0.1$ at $5\sigma$ significance in ``reasonable'' (i.e. a few hours per observing epoch) integration times.  Note that the motion of the pulsar through the Galaxy with time implies that the multi-epoch observations of each pulsar will be sensitive to variations over a range of length scales; we plan to probe length scales of $\sim 1$~AU to hundreds of AU by observing the sample at multiple epochs. 
+
+The current implementation of the ``gated'' GWB correlator mode does not allow one to correct for pulsar dispersion, i.e. the frequency-dependence of the pulse arrival times. Since the \hi~21cm absorption is narrow in frequency space, this is unlikely to be an important effect. However, we restricted our target sample to pulsars with relatively low dispersion measures such that the dispersion across a frequency span of $\approx 1$~MHz (which would contain the entire \hi~21cm absorption and sufficient spectral baseline on either side of the line) is less than the pulse FWHM, W$_{50}$. We further also excluded all millisecond pulsars, where dispersion smearing could significantly broaden the pulse profile.
+
+We used the following criteria to select our pulsar sample: (1)~pulse width, $W_{50} \lesssim 30$~ms, (2)~DM~$\lesssim 50$~pc~cm$^{-3}$, (3)~declination $\delta > -50$~deg, and (4)~the requirement that optical depth variations of $\Delta \tau = 0.1$ be detectable with 4~hours of on-source GMRT time, with a spectral resolution of 2~km/s (i.e. 9.5~kHz) and 26 antennas. We now use the maximum \hi~brightness temperature, $T_{B{\rm max}}$, along each sightline when estimating the thermal noise. Further, we included the effects of on-pulse
+gating by using an ``effective'' integration time of [T$_{\rm On}*W_{50}/P_0$], where $P_0$ is the pulsar period and $W_{50}$ is the pulse width in the sensitivity equation. Note that the resolution of 2~km/s was chosen to match the expected velocity width of the absorption lines; this corresponds to the FWHM of thermally-broadened gas at a kinetic temperature of $\sim 80$~K. For the values listed in Table~1, we use $N_{\rm ante}=26$, $T_{\rm on}=1$~hr, and $\Delta\nu=9600$~Hz:
+\begin{eqnarray}
+S_{\rm RMS} &=& \frac{(70+T_{B{\rm max}})/0.22}
+{\sqrt{2 \times N_{\rm ante} \times (N_{\rm ante}+1) \times \Delta\nu \times T_{\rm on} \times W_{50}/P_0}} , \\
+\tau_{5\sigma} &=& 5 \times \frac{S_{\rm RMS}}{S_{W50}} ,
+\end{eqnarray}
+where $W_{50}$ is expressed in seconds in the equation.
+
+We note, in passing, that the conversion from RMS noise to optical-depth sensitivity is valid in the low-opacity limit, $\tau << 1$. While high opacities ($\tau \gtrsim 1)$ are likely to be present at some velocities along our chosen sightlines, we plan to only search for opacity variations at velocities with opacities $\tau < 0.2$, i.e. in the low-opacity limit. Our final pulsar sample, consisting of 13 targets, is listed in Table~1.
+
+Determining the scale dependence of the TSAS requires fine sampling over a range of length scales in the ISM, from AU-scales to a few hundreds of AU. We aim in the present proposal to use 2 epochs of monitoring per pulsar, separated by $\approx 3$~months, which would allow us to probe length scales of $\sim 1.6 - 52$~AU, with a median value at 16~AU. This will provide moderate sampling of ISM length scales over a few tens of AU. Follow-up observations in following GMRT cycles are critical to enhance the sampling and extend it to larger length scales. For pulsars without measured velocities in the present literature, we plan to use VLBA observations to determine the transverse velocities to allow us to map any detected changes in the \hi~21cm optical depth to a transverse length scale.
+
+
+
+\vskip 0.15in
+\noindent {\color{royalblue} \large \bf This proposal}
+\vskip 0.1in 
+
+We propose here to use the GMRT Band-5 receivers and the shared-risk ``gated'' GWB mode to carry out sensitive two-epoch observation of 13 pulsars in order to probe the existence and ubiquity of tiny-scale structure in the atomic ISM. We will use a bandwidth of 6.25~MHz for the observations, with 2 gates, one during the ``on'' pulse, and the other in the ``off'' pulse region. Each gate will have 4096 channels, yielding a velocity resolution of $\sim 0.32$~km/s. We will use regular observations of one or more of the calibrators 3C287, 0438$-$436, or 1611+343 for standard bandpass calibration; these have been shown to have \hi~21cm optical depths $\lesssim 0.005$ (Roy et al. 2013), implying that the absorption present in their spectra would be far below our target optical depth sensitivity for \hi~21cm absorption variability ($\tau \gtrsim 0.1$). We request a separation of $\approx 3$~months between observing epochs for each pulsar, to allow us to probe transverse length scales of $\approx 1.6-52$~AU in the ISM. Our total on-source time requirement is 75~hours. Assuming overheads of 30\% for phasing, slewing, and calibration, our total time request is 100~hours, including all overheads and calibration.
+
+
+
+\vskip 0.15in
+\noindent {\bf \color{royalblue} References:} \\ \color{black}
+\noindent {\footnotesize \parbox[t]{.48\textwidth}{%
+\noindent E. Audit \& P. Hennebelle 2005, A\&A, 433, 1 \\
+R. Braun \& N. Kanekar 2005, A\&A, 436, L53 \\
+C. L. Brogan et al. 2005, AJ, 130, 698 \\
+A. A. Deshpande et al. 1992, MNRAS, 258, 19 \\
+A. A. Deshpande 2000, MNRAS, 317, 199 \\
+A. A. Deshpande et al. 2000, ApJ, 543, 227 \\
+P. J. Diamond et al. 1989, ApJ, 347, 302 \\
+N. H. Dieter et al. 1976, ApJ, 206, L113 \\
+% P. Dutta et al. 2009, MNRAS, 398, 887 \\
+B. G. Elmegreen \& J. Scalo 2004, ARA\&A, 42, 211 \\
+M. Faison et al. 1998, AJ, 116, 2916 \\ 
+M. Faison \& W. M. Goss 2001, \\
+D. A. Frail et al. 1994, ApJ, 436, 144 \\
+P. C. Frisch 1995, SSRv, 72, 499 \\
+J. Jiang et al. 2025, ApJ, 988, 277 \\
+S. Johnston et al. 2003, MNRAS, 341, 941 
+}}
+\noindent {\footnotesize \parbox[t]{.48\textwidth}{%
+N. Kanekar et al. 2011, ApJL, 737, L33 \\
+S. R. Kulkarni \& C. Heiles 1988, in ``Galactic and Extra-Galactic Radio Astronomy''\\
+M. Liu et al. 2025, ApJS, 278, 13 \\
+R. N. Manchester et al. 2005, AJ, 129, 1993 \\
+S. D. Points et al. 2004, PASP, 116, 801 \\
+N. Roy et al. 2012, ApJ, 749, 144 \\
+D. Rybarczyk et al. 2020, ApJ, 893, 152 \\
+S. Stanimirovic et al. 2003, ApJ, 598, L23 \\
+S. Stanimirovic \& C. Heiles 2005, ApJ, 631, 371 \\
+S. Stanimirovic et al. 2010, ApJ, 720, 415 \\
+J. K. Watson \& D. M. Meyer 1996, ApJ, 473, L127 
+}}
+
+
+\newpage
+\noindent {\large \bf Results from earlier GMRT proposals:}
+
+Earlier GMRT proposals include :
+\begin{itemize}
+
+\item{The temperature of the WNM in the Milky Way (Nirupam Roy, Nissim Kanekar, Jayaram Chengalur
+\& Robert Braun):
+All data have been analysed, and have either been published or are being written up. 
+Publications include\\ 
+1. Kanekar et al. 2011, ApJ, 737, L33 {\it An H I Column Density Threshold for Cold Gas Formation in the Galaxy}}
+
+\item{\hi~21cm studies of damped Lyman-$\alpha$ systems (Nissim Kanekar \& Jayaram N Chengalur) :
+All data have been analysed, and have either been published or are presently being
+written up. Recent publications include :\\
+1. Kanekar, Smette, Briggs \& Chengalur 2009, ApJ, 705, L40 {\it A Metallicity-Spin Temperature Relation in Damped Ly$\alpha$ Systems} \\
+2. Kanekar, Chengalur \& Lane 2007, MNRAS, 375, 1528 {\it \hi~21cm absorption at $z \sim 3.39$ 
+towards PKS~0201+113} \\
+3. Kanekar \& Chengalur 2005, A\&A, 429, L51 {\it The strange case of a sub-DLA with very
+little \hi}\\
+4. Kanekar \& Chengalur 2003, A\&A, 399, 857 {\it A deep search for \hi~21cm absorption
+in high redshift damped Lyman-$\alpha$ systems}\\
+5. Chengalur \& Kanekar 2002, A\&A, 388, 383. {\it \hi~21cm imaging of a nearby
+Damped Lyman-$\alpha$ system}\\
+6. Kanekar et al. 2002, A\&A, 382, 838. {\it A new 21-cm absorber identified with
+an $L \sim L_\star$ galaxy} \\
+7. Kanekar \& Chengalur 2001, MNRAS, 325, 631. {\it Variable 21-cm absorption at
+$z=0.3127$} \\
+8. Kanekar et al. 2001, A\&A, 373, 394. {\it Detection of a multi-phase ISM at
+$z= 0.2212$} }
+
+\item{OH at intermediate redshifts (Nissim Kanekar \& Jayaram N Chengalur) : \\
+All data have been analysed. Recent publications include\\
+1. Kanekar \& Chengalur 2008, MNRAS, 384, L6. {\it Outflowing atomic and molecular gas at $z \sim 0.67$ towards 1504 + 377}\\
+2. Kanekar et al. 2004, Phys. Rev. Lett., 93, 241302. {\it Conjugate 18cm OH Satellite Lines at a Cosmological Distance}\\
+3. Chengalur \& Kanekar 2003, Phys. Rev. Lett., 91, 241302. {\it Constraining the variation
+of fundamental constants using 18cm OH lines} \\
+4. Kanekar et al. 2003, MNRAS (Lett), 345, L7. {\it Detection of OH and wide \hi\
+absorption towards B0218+357} \\
+5. Kanekar \& Chengalur 2002, A\&A, 381, L73. {\it Molecular gas at intermediate redshifts} }
+
+\item{Organic molecules in the ISM (Jayaram N Chengalur \& Nissim Kanekar) : \\
+All data have been analysed. Publications include\\
+1. Chengalur \& Kanekar 2003, A\&A, 403, L43. {\it Widespread acetaldehyde near the Galactic Centre}}
+
+\end{itemize}
+
+
+\end{document}
