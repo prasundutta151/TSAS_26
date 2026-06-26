@@ -12,3 +12,10 @@ B1933+16,hi4pi_profile_B1933p16.csv,52.436,-2.093,19:35:47.8,+16:16:39.9,0.200,-
 B2016+28,hi4pi_profile_B2016p28.csv,68.099,-3.983,20:18:03.8,+28:39:54.2,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.361E+22
 B2020+28,hi4pi_profile_B2020p28.csv,68.863,-4.671,20:22:37.0,+28:54:23.1,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.334E+22
 B2021+51,hi4pi_profile_B2021p51.csv,87.862,8.380,20:22:49.8,+51:54:50.2,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.233E+22
+B0355+54,hi4pi_profile_B0355p54.csv,148.190,0.811,03:58:53.7238,+54:13:13.784,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.735E+22
+B0833-45,hi4pi_profile_B0833m45.csv,263.552,-2.787,08:35:20.61149,-45:10:34.8751,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.777E+22
+B0835-41,hi4pi_profile_B0835m41.csv,260.904,-0.336,08:37:21.1943,-41:35:14.563,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.944E+22
+B1706-16,hi4pi_profile_B1706m16.csv,5.775,13.657,17:09:26.4413,-16:40:57.73,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.166E+22
+B1737-30,hi4pi_profile_B1737m30.csv,358.294,0.238,17:40:33.82,-30:15:43.5,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.138E+23
+B1742-30,hi4pi_profile_B1742m30.csv,358.553,-0.963,17:45:56.3268681,-30:40:22.75136,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.879E+22
+B1749-28,hi4pi_profile_B1749m28.csv,1.540,-0.961,17:52:58.6896,-28:06:37.3,0.200,-400.00,400.00,"Bonn AIfA HI Profile Search, HI4PI Gaussian profile",0.879E+22

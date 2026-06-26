@@ -1,5 +1,18 @@
 # DEV_NOTES
 
+## 26:6:26::19:40 Intent
+
+Calculate the new-pulsar proposal CSV and LaTeX table as `Table2`, using parallax-derived distances where ATNF gives parallax and supplied ATNF distances otherwise.
+
+## 26:6:26::19:40 What Is Done
+
+- Queried the ATNF psrcat database for `PX`, `PMTOT`, `VTRANS`, and coordinates for the seven new pulsars.
+- Used `DIST kpc = 1 / PX mas` for B0355+54 and B0833-45, and recomputed their transverse velocities from `4.74047 * PMTOT * DIST`.
+- Marked non-parallax distances and corresponding velocities with `*` in `csv/sample_new_pulsar_ATNF.csv`.
+- Fetched HI4PI Gaussian profile CSVs for the seven new pulsars and appended their metadata to `csv/hi4pi_profile_index.csv`.
+- Generated `csv/Table2.csv` and `latex/Table2.tex` with `script/make_proposal_table.py`.
+- Updated README Markdown/HTML to describe `Table2`.
+
 ## 26:6:26::19:24 Intent
 
 Add a separate ATNF-style CSV for the pulsars present in the user's newer ATNF table but absent from the existing ATNF sample.
